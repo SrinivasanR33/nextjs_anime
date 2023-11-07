@@ -1,3 +1,4 @@
+import Usertable from '@/app/component/userComponent/Table'
 import UserForm from '@/app/component/userComponent/UserForm'
 import React from 'react'
 
@@ -25,9 +26,9 @@ const User = () => {
     ]
     return (
         <div>
-            <div className='flex'>
-                <div className='p-2 w-1/2'><UserForm users={arr} /></div>
-                <div></div>
+            <div className='grid lg:grid-cols-2 sm:grid-cols-1 gap-2 pt-4'>
+                <div><UserForm users={arr} /></div>
+                <div><Usertable /></div>
             </div>
         </div>
     )

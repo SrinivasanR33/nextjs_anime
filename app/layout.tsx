@@ -4,6 +4,7 @@ import './globals.css'
 import imag from "../public/S.png"
 import { companyName } from './commen/CommenName'
 import Navbar from './component/Navbar'
+import Layout from './component/LayoutComponent/Route'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -13,17 +14,17 @@ export const metadata: Metadata = {
   icons: [{ rel: 'icon', url: imag.src }],
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode, }) {
+
   return (
-    <html lang="en">
+    <html lang="en" data-theme={"light"} >
       <body className={inter.className}>
         <div className="min-h-screen min-w-full bg-gray-200">
-          <Navbar page="main" />
-          {children}
+          {/* <Navbar page="main" /> */}
+          <Layout />
+          <main>
+            {children}
+          </main>
         </div>
       </body>
     </html>
