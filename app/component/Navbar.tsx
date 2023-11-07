@@ -1,8 +1,8 @@
 import React from 'react'
-import { companyName } from '../commen/CommenName'
 import imag from "../../public/S.png"
 import Image from 'next/image'
 import Link from 'next/link'
+import SwitchTheme from './theme/Theme'
 interface Props {
     page: String,
 
@@ -18,6 +18,7 @@ function Navbar(props: Props) {
                 <div className="navbar-center hidden  md:flex">
                     <ul className="menu menu-horizontal px-1">
                         <li className='pt-1'><Link href={"/home"}>Home</Link></li>
+                        <li className='pt-1'><Link href={"/home/user"}>User</Link></li>
                         <li className='pt-1'><Link href={"/help"}>Help</Link></li>
                         <li><Link href={"/login"}><button className='btn btn-primary btn-sm hover:shadow-sm '>Login</button> </Link></li>
                         <li><Link href={"/signup"}><button className='btn btn-accent btn-sm'>Sign Up</button> </Link></li>
@@ -25,9 +26,10 @@ function Navbar(props: Props) {
                 </div> :
                 <div className="navbar-center hidden md:flex">
                     <ul className="menu menu-horizontal px-1">
-                        <li><Link href={"/home/user"}>User</Link></li>
-                        <li><Link href={"/help"}>Help</Link></li>
+                        <li><a href={"/home/user"}>User</a></li>
+                        <li><a href={"/help"}>Help</a></li>
                         <li className='hover:text-red-500 translate-x-1'><Link href={"/login"}>Logout</Link></li>
+                        <li><SwitchTheme /></li>
                     </ul>
                 </div>}
         </div>

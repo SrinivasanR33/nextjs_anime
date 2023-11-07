@@ -27,7 +27,7 @@ const UserForm: React.FC<{ users: Props }> = ({ users }) => {
     }
     return (
         <form onSubmit={onSubmit1}>
-            <div className='grid grid-cols-2 gap-2'>
+            <div className='grid lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-2  gap-2'>
                 {formValues.map((val: input, i) => (
                     <div key={i} className="form-control w-full max-w-xs">
                         <label className="label">
