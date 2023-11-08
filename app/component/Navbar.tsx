@@ -2,7 +2,7 @@ import React from 'react'
 import imag from "../../public/S.png"
 import Image from 'next/image'
 import Link from 'next/link'
-import SwitchTheme from './theme/Theme'
+// import SwitchTheme from './theme/Theme'
 interface Props {
     page: String,
 
@@ -10,7 +10,7 @@ interface Props {
 function Navbar(props: Props) {
     const { page } = props
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar h-12 bg-slate-400">
             <div className="flex-1">
                 <a href='/' className="btn btn-ghost normal-case text-xl"><Image src={imag} className="w-8" alt='hi' /></a>
             </div>
@@ -29,7 +29,7 @@ function Navbar(props: Props) {
                         <li><a href={"/home/user"}>User</a></li>
                         <li><a href={"/help"}>Help</a></li>
                         <li className='hover:text-red-500 translate-x-1'><Link href={"/login"}>Logout</Link></li>
-                        <li><SwitchTheme /></li>
+                        {/* <li className='pt-1'><SwitchTheme /></li> */}
                     </ul>
                 </div>}
         </div>
