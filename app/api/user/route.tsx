@@ -1,12 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import schema from "./schema";
+import { createUser, getAllUsers } from "@/prisma/user";
 interface Props {
     params: {
         id: number
     }
 }
-export function GET(request: NextRequest) {
-    return NextResponse.json([{ id: 1, name: "mosh" }, { id: 2, name: "hi" }])
+export async function GET() {
+    const user = await getAllUsers()
+    return NextResponse.json(user)
 }
 export async function POST(request: NextRequest) {
     const body = await request.json()
@@ -14,5 +16,6 @@ export async function POST(request: NextRequest) {
     if (!validate.success) {
         return NextResponse.json({ error: validate.error.errors }, { status: 400 })
     }
-    return NextResponse.json({ id: 1, name: body.name })
+    const user = await createUser(body)
+    return NextResponse.json(user)
 }

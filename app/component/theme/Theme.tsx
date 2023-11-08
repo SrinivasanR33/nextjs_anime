@@ -20,11 +20,11 @@ const SwitchTheme = () => {
 
 
     return (
-        <button className="btn btn-circle" onClick={toggleTheme}>
+        <button className="btn btn-circle pt-2 btn-sm" onClick={toggleTheme}>
             {theme === "dark" ? (
-                <FiMoon className="w-5 h-5" />
+                <FiMoon className="w-4 h-4" />
             ) : (
-                <FiSun className="w-5 h-5" />
+                <FiSun className="w-4 h-4" />
             )}
         </button>
     );

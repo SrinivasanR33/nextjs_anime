@@ -1,41 +1,51 @@
+import { GET } from '@/app/api/user/route'
+import { getUserAPI } from '@/app/home/user/userService'
 import React from 'react'
+type User = {
+    id: number;
+    email: string;
+    name: string;
+    number: number
+};
+async function Usertable() {
+    const res = await getUserAPI()
+    const userList = await res.json()
 
-function Usertable() {
+    console.log(userList, "gfjh")
+
     return (
         <div className="overflow-x-auto">
-            <table className="table table-zebra">
-                {/* head */}
+            <table className="table table-xs">
                 <thead>
                     <tr>
                         <th></th>
                         <th>Name</th>
-                        <th>Job</th>
-                        <th>Favorite Color</th>
+                        <th>Email</th>
+                        <th>Number</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {/* row 1 */}
-                    <tr>
-                        <th>1</th>
-                        <td>Cy Ganderton</td>
-                        <td>Quality Control Specialist</td>
-                        <td>Blue</td>
-                    </tr>
-                    {/* row 2 */}
-                    <tr>
-                        <th>2</th>
-                        <td>Hart Hagerty</td>
-                        <td>Desktop Support Technician</td>
-                        <td>Purple</td>
-                    </tr>
-                    {/* row 3 */}
-                    <tr>
-                        <th>3</th>
-                        <td>Brice Swyre</td>
-                        <td>Tax Accountant</td>
-                        <td>Red</td>
-                    </tr>
+                    {userList.map((val: User, i: number) => (
+                        <tr key={i}>
+                            <th>{i}</th>
+                            <td>{val.name}</td>
+                            <td>{val.email}</td>
+                            <td>{val.number}</td>
+                        </tr>
+                    ))}
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>Job</th>
+                        <th>company</th>
+                        <th>location</th>
+                        <th>Last Login</th>
+                        <th>Favorite Color</th>
+                    </tr>
+                </tfoot>
             </table>
         </div>
     )
