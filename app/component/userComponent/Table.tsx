@@ -1,17 +1,14 @@
 import { GET } from '@/app/api/user/route'
+import { User } from '@/app/commen/CommenTypeDefination'
 import { getUserAPI } from '@/app/home/user/userService'
 import React from 'react'
-type User = {
-    id: number;
-    email: string;
-    name: string;
-    number: number
-};
+import { FiEdit } from 'react-icons/fi'
+
 async function Usertable() {
     const res = await getUserAPI()
     const userList = await res.json()
 
-    console.log(userList, "gfjh")
+    // console.log(userList, "gfjh")
 
     return (
         <div className="overflow-x-auto">
@@ -28,14 +25,15 @@ async function Usertable() {
                 <tbody>
                     {userList.map((val: User, i: number) => (
                         <tr key={i}>
-                            <th>{i}</th>
+                            <th>{i + 1}</th>
                             <td>{val.name}</td>
                             <td>{val.email}</td>
                             <td>{val.number}</td>
+                            <td className='text-blue-500'><FiEdit /></td>
                         </tr>
                     ))}
                 </tbody>
-                <tfoot>
+                {/* <tfoot>
                     <tr>
                         <th></th>
                         <th>Name</th>
@@ -45,7 +43,7 @@ async function Usertable() {
                         <th>Last Login</th>
                         <th>Favorite Color</th>
                     </tr>
-                </tfoot>
+                </tfoot> */}
             </table>
         </div>
     )

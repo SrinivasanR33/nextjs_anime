@@ -1,27 +1,13 @@
 'use client'
 import { formName } from '@/app/commen/CommenName';
+import { datavalue } from '@/app/commen/CommenTypeDefination';
 import { CreateUserAPI } from '@/app/home/user/userService';
-import { type } from 'os';
 import React, { useState } from 'react'
-import { number } from 'zod';
-interface input {
-    name: String;
-    value: String | Boolean;
-    type: String;
-}
-type Props = input[]
-interface datavalue {
-    name: string;
-    email: string;
-    number: number;
-}
-
-const UserForm: React.FC<{ users: Props }> = ({ users }) => {
-    const [formValues, setFormValues] = useState(users);
+const UserForm = () => {
     const [stateValue, setstateValue] = useState<datavalue>({
         name: "",
         email: "",
-        number: 0
+        number: ""
     })
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, index: string) => {
         if (index === "name") {
@@ -38,7 +24,7 @@ const UserForm: React.FC<{ users: Props }> = ({ users }) => {
         }
         if (index === "number") {
             setstateValue((per: datavalue) => {
-                const res = { ...per, number: +e.target.value }
+                const res = { ...per, number: e.target.value }
                 return res
             })
         }
