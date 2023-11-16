@@ -32,20 +32,10 @@ const UserForm = () => {
     const onSubmit1 = async () => {
         console.log(stateValue, "statevalue")
         await CreateUserAPI(stateValue)
-        // event.preventDefault()
-        // console.log(formValues)
-
-        // console.log(event.target)
-        // const formData = new FormData(event.target as HTMLFormElement)
-        // console.log(formData.get('value'))
-        // formData.forEach((value: FormDataEntryValue, key: string) => {
-        //     console.log(key, value, 'HI');
-        // });
     }
     return (
         <div>
             <div className='grid lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-2  gap-2'>
-
                 <div className="form-control w-full max-w-xs">
                     <label className="label">
                         <span className="label-text">{formName.name}</span>
@@ -79,7 +69,6 @@ const UserForm = () => {
                         placeholder={formName.number}
                         className={"input input-bordered w-full max-w-xs input-sm"} />
                 </div>
-
             </div>
             <div className='pt-3 text-center '>
                 <button className='btn btn-neutral btn-sm hover: bg-black text-green-700' onClick={(e) => onSubmit1()}>Submit</button>

@@ -1,5 +1,6 @@
 import { GET } from '@/app/api/user/route'
 import { User } from '@/app/commen/CommenTypeDefination'
+import { ActionIcon } from '@/app/commen/InteractionComponents'
 import { getUserAPI } from '@/app/home/user/userService'
 import React from 'react'
 import { FiEdit } from 'react-icons/fi'
@@ -29,7 +30,7 @@ async function Usertable() {
                             <td>{val.name}</td>
                             <td>{val.email}</td>
                             <td>{val.number}</td>
-                            <td className='text-blue-500'><FiEdit /></td>
+                            <td className='text-blue-500'><ActionIcon obj={val} /></td>
                         </tr>
                     ))}
                 </tbody>

@@ -1,5 +1,6 @@
 import { datavalue } from "@/app/commen/CommenTypeDefination"
 
+
 export const getUserAPI = async () => {
     const UserData = await fetch('http://localhost:3000/api/user', { cache: "no-store" })
     // const res = await UserData.json()
