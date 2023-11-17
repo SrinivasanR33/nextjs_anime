@@ -1,4 +1,4 @@
-import { UserPrisma } from "@/app/commen/CommenTypeDefination"
+import { UpdateUserPrisma, UserPrisma } from "@/app/commen/CommenTypeDefination"
 import prisma from "./prisma"
 
 export const getAllUsers = async () => {
@@ -6,8 +6,6 @@ export const getAllUsers = async () => {
     return users
 }
 export const createUser = async (data1: UserPrisma) => {
-    console.log(data1, "hi")
-
     const users = await prisma.user.create({ data: data1 })
     return users
 }

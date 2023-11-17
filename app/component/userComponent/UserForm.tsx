@@ -1,7 +1,7 @@
 'use client'
 import { formName } from '@/app/commen/CommenName';
 import { datavalue } from '@/app/commen/CommenTypeDefination';
-import { CreateUserAPI } from '@/app/home/user/userService';
+import { CreateUserAPI, getUserAPI } from '@/app/home/user/userService';
 import React, { useState } from 'react'
 const UserForm = () => {
     const [stateValue, setstateValue] = useState<datavalue>({
@@ -32,6 +32,13 @@ const UserForm = () => {
     const onSubmit1 = async () => {
         console.log(stateValue, "statevalue")
         await CreateUserAPI(stateValue)
+        await getUserAPI()
+        setstateValue({
+            name: "",
+            email: "",
+            number: ""
+        })
+
     }
     return (
         <div>

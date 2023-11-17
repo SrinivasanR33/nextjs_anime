@@ -1,3 +1,4 @@
+import prisma from "@/prisma/prisma";
 import { NextRequest, NextResponse } from "next/server";
 interface Props {
     params: {
@@ -26,11 +27,13 @@ export async function PUT(request: NextRequest, { params }: {
 }
 export async function DELETE(request: NextRequest, { params }: {
     params: {
-        id: number
+        id: string
     }
 }) {
-    if (params.id > 10) {
-        return NextResponse.json({ error: 'not found' }, { status: 404 })
+    const findUser = await prisma.user.findUnique({ where: { id: params.id } })
+    if (!findUser) {
+        return NextResponse.json({ error: 'User Not found' }, { status: 400 })
     }
-    return NextResponse.json({})
+    const user = await prisma.user.delete({ where: { id: params.id } })
+    return NextResponse.json(user)
 }

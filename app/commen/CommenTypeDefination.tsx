@@ -21,6 +21,12 @@ export type UserPrisma = {
     name: string;
     number: string;
 };
+export type UpdateUserPrisma = {
+    id: string;
+    email: string;
+    name: string;
+    number: string;
+};
 export interface UserLT {
     obj: UserL
 }

@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode, }) {
 
   return (
-    <html lang="en" data-theme={"dark"} >
+    <html lang="en" data-theme={"night"} >
       <body className={inter.className}>
         <div className="min-h-screen min-w-full">
           {/* <Navbar page="main" /> */}
