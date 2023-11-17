@@ -3,7 +3,6 @@ import { User } from '@/app/commen/CommenTypeDefination'
 import { ActionIcon } from '@/app/commen/InteractionComponents'
 import { getUserAPI } from '@/app/home/user/userService'
 import React from 'react'
-import { FiEdit } from 'react-icons/fi'
 
 async function Usertable() {
     const res = await getUserAPI()
