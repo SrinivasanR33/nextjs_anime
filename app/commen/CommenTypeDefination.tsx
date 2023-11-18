@@ -4,16 +4,16 @@ export interface datavalue {
     number: string;
 }
 export type User = {
-    id: number;
+    id: string;
     email: string;
     name: string;
     number: number
 };
 export interface UserL {
-    id: number;
+    id: string;
     email: string;
     name: string;
-    number: number
+    number: string
 };
 export type UserPrisma = {
     // id: string;
@@ -28,5 +28,5 @@ export type UpdateUserPrisma = {
     number: string;
 };
 export interface UserLT {
-    obj: UserL
+    userList: UserL[]
 }

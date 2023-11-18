@@ -5,6 +5,7 @@ import imag from "../public/S.png"
 import { companyName } from './commen/CommenName'
 import Navbar from './component/Navbar'
 import Layout from './component/LayoutComponent/Route'
+import { Providers } from '@/redux/provider/provider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,13 +18,13 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode, }) {
 
   return (
-    <html lang="en" data-theme={"night"} >
+    <html lang="en" data-theme={"dark"} >
       <body className={inter.className}>
-        <div className="min-h-screen min-w-full">
+        <div className="min-h-screen min-w-full overflow-hidden">
           {/* <Navbar page="main" /> */}
           <Layout />
           <main>
-            {children}
+            <Providers>{children}</Providers>
           </main>
         </div>
       </body>

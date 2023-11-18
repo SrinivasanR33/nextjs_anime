@@ -4,3 +4,4 @@ export const formName = {
     email: 'Email',
     number: 'number'
 }
+export const URL = "http://localhost:4000/api"
