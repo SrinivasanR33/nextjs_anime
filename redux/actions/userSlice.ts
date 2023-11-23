@@ -13,6 +13,8 @@ const initialState: UserState = {
     name: "",
     email: "",
     number: "",
+    isAdmin: false,
+    password: "",
   },
 };
 
