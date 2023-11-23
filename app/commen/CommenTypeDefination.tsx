@@ -22,7 +22,7 @@ export interface UserL {
     password?: string
 };
 export type UserPrisma = {
-    id?: string;
+    // id?: string;
     email: string;
     name: string;
     number: string;
