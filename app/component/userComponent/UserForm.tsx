@@ -8,17 +8,26 @@ import { editUser, getUserList } from '@/redux/actions/userSlice';
 const UserForm = () => {
     type UserLy = UserL[]
     const dispatch = useAppDispatch()
-    const userData = useAppSelector((state) => state.userReducer.userData);
+    const { userData } = useAppSelector((state) => state.userReducer);
     const [stateValue, setstateValue] = useState<datavalue>({
+        id: "",
         name: "",
         email: "",
-        number: ""
+        number: "",
+        isAdmin: false,
+        password: '',
     })
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, index: string) => {
         if (index === "name") {
             setstateValue((per: datavalue) => {
                 const res = { ...per, name: e.target.value }
+                return res
+            })
+        }
+        if (index === "password") {
+            setstateValue((per: datavalue) => {
+                const res = { ...per, password: e.target.value }
                 return res
             })
         }
@@ -37,40 +46,59 @@ const UserForm = () => {
     };
 
     const apicall = async () => {
-        const res = await getUserAPI()
-        const userList = await res.json()
-        dispatch(getUserList(userList))
+        await getUserAPI()
     }
-
     useEffect(() => {
         apicall()
     }, [])
     useEffect(() => {
         setstateValue({
+            id: userData.id,
             name: userData.name,
             email: userData.email,
-            number: userData.number
+            number: userData.number,
+            isAdmin: userData.isAdmin,
+            password: userData.password
         })
     }, [userData])
 
     const onSubmit1 = async () => {
-        console.log(stateValue, "statevalue")
-        await CreateUserAPI(stateValue)
-        await apicall()
-        setstateValue({
-            name: "",
-            email: "",
-            number: ""
-        })
+        if (userData.id) {
+            await CreateUserAPI(stateValue, "put")
+            await apicall()
+            resetData()
+        } else {
+            console.log(stateValue, "statevalue")
+            await CreateUserAPI(stateValue, "post")
+            await apicall()
+            setstateValue({
+                name: "",
+                email: "",
+                number: "",
+                isAdmin: false,
+                password: ''
+            })
+        }
 
     }
+    const handleonInput = (e: React.FormEvent<HTMLInputElement>) => {
+        e.currentTarget.value = e.currentTarget.value.slice(0, 10)
+    }
+    const handelCheckBox = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setstateValue({ ...stateValue, isAdmin: e.currentTarget.checked })
+    }
     const resetData = () => {
-        setstateValue({ name: "", email: "", number: "" })
+        setstateValue({
+            name: "", email: "", number: "", id: "", isAdmin: false,
+            password: ''
+        })
         dispatch(editUser({
             id: '',
             name: "",
             email: "",
-            number: ""
+            number: "",
+            isAdmin: false,
+            password: ''
         }))
     }
     return (
@@ -107,8 +135,26 @@ const UserForm = () => {
                             type={"number"}
                             value={stateValue.number}
                             onChange={(e) => handleInputChange(e, 'number')}
+                            onInput={(e) => handleonInput(e)}
                             placeholder={formName.number}
                             className={"input input-bordered w-full max-w-xs input-sm"} />
+                    </div>
+                    <div className="form-control w-full max-w-xs">
+                        <label className="label">
+                            <span className="label-text">{formName.password}</span>
+                        </label>
+                        <input
+                            type={"password"}
+                            value={stateValue.password}
+                            onChange={(e) => handleInputChange(e, 'password')}
+                            placeholder={formName.password}
+                            className={"input input-bordered w-full max-w-xs input-sm"} />
+                    </div>
+                    <div className="form-control pt-6">
+                        <label className="cursor-pointer label">
+                            <span className="label-text">Remember me</span>
+                            <input type="checkbox" checked={stateValue.isAdmin} onChange={(e) => handelCheckBox(e)} className="checkbox checkbox-success" />
+                        </label>
                     </div>
                 </div>
                 <div className='pt-7 flex gap-2 justify-center '>
