@@ -36,7 +36,7 @@ function Usertable() {
                     <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px] mb-2.5"></div>
                 </div> :
                 <>
-                    <table className="table text-gray-200 table-xs table-pin-rows table-pin-cols">
+                    <table className="table text-accent table-xs table-pin-rows table-pin-cols">
                         <thead>
                             <tr>
                                 <th></th>
