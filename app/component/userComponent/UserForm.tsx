@@ -104,7 +104,7 @@ const UserForm = () => {
     return (
         <div>
             <div className='px-4'>
-                <div className='grid  lg:grid-cols-3 sm:grid-cols-2 text-gray-100 md:grid-cols-2  gap-2'>
+                <div className='grid  lg:grid-cols-3 sm:grid-cols-2 text-black md:grid-cols-2  gap-2'>
                     <div className="form-control w-full max-w-xs">
                         <label className="label">
                             <span className="label-text">{formName.name}</span>

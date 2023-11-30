@@ -1,12 +1,13 @@
-import { UserPrisma } from "@/app/commen/CommenTypeDefination"
-import prisma from "./prisma"
+import { connect } from "../utils/connection"
 
 export const getAllUsers = async () => {
-    const users = await prisma.user.findMany({})
+    const { Adminuser } = await connect()
+    const users = await Adminuser.find({})
     return users
 }
 export const createUser = async (data1: any) => {
-    console.log(data1, "data1")
-    const users = await prisma.user.create({ data: data1 })
+    const { Adminuser } = await connect()
+    // console.log(data1, "data1")
+    const users = await Adminuser.create(data1)
     return users
 }
