@@ -5,6 +5,8 @@ import { PrismaClient } from "@prisma/client";
 import NextAuth, { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { Login } from "@/app/login/loginService";
+import { LoginTypeToken } from "@/app/login/loginType";
 
 const prisma = new PrismaClient();
 export const authOption: NextAuthOptions = {
@@ -26,7 +28,6 @@ export const authOption: NextAuthOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials, req) {
-        // Add logic here to look up the user from the credentials supplied
         const user = {
           id: "1",
           name: "Srinivasan",
@@ -34,16 +35,12 @@ export const authOption: NextAuthOptions = {
           password: "rs2ssvvmm",
           isAdmin: true,
         };
-
         if (user) {
-          console.log(user, req, "hi", credentials, "user");
-          // Any object returned will be saved in `user` property of the JWT
+          const res = await Login(credentials as LoginTypeToken);
+          console.log(res, "res123");
           return user;
         } else {
-          // If you return null then an error will be displayed advising the user to check their details.
           return null;
-
-          // You can also Reject this callback with an Error thus the user will be sent to the error page with the error message as a query parameter
         }
       },
     }),
