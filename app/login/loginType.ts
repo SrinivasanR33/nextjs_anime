@@ -3,7 +3,6 @@ export interface LoginType {
   password: string;
 }
 export interface LoginTypeToken {
-  csrfToken: string;
   username: string;
   password: string;
 }
