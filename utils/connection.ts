@@ -20,11 +20,23 @@ export const connect = async () => {
     password: String,
     name: String,
   });
-
+  const UploadSchema = new mongoose.Schema(
+    {
+      type: String,
+      secureUrl: String,
+      publicId: String,
+      uploadImagInfo: Object,
+    },
+    {
+      timestamps: true,
+    }
+  );
   // OUR User MODEL
   const Adminuser =
     mongoose.models.Adminuser ||
     mongoose.model<UserData>("Adminuser", UserSchema);
+  const Upload =
+    mongoose.models.Upload || mongoose.model("Upload", UploadSchema);
 
-  return { conn, Adminuser };
+  return { conn, Adminuser, Upload };
 };

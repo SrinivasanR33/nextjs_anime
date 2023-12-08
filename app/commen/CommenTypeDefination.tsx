@@ -41,3 +41,9 @@ export type Load = {
 export interface UserLT {
     userList: UserL[]
 }
+export interface UploadType {
+    type: string,
+    secureUrl: string,
+    publicId: string,
+    uploadImagInfo: object,
+}
