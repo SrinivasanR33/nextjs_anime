@@ -7,3 +7,4 @@ export const formName = {
     isAdmin: "Admin"
 }
 export const URL = "http://localhost:4000/api"
+export const DEFAULT_FOLDER_NAME = "uzwj6aq9"
