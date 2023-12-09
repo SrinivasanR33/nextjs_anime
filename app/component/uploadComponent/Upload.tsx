@@ -11,12 +11,13 @@ interface cloudinaryresult {
     secure_url: string;
 }
 interface props {
-    uploadFolderId: string;
+    uploadFolderId: string | undefined;
     publicId: string;
+    folderName: string | undefined;
     setpublicId: Function
 }
 const UploadType: React.FC<props> = (props) => {
-    const { publicId, setpublicId, uploadFolderId } = props
+    const { publicId, setpublicId, uploadFolderId, folderName } = props
     console.log(uploadFolderId, 'uploadFolderId')
     const uploadFun = async (req: UploadType) => {
         const res = await UploadImage(req)
@@ -25,18 +26,18 @@ const UploadType: React.FC<props> = (props) => {
 
     return (
         <>
-            <CldUploadWidget uploadPreset={uploadFolderId ? uploadFolderId : DEFAULT_FOLDER_NAME} onUpload={(result, widget) => {
+            <CldUploadWidget key={uploadFolderId} uploadPreset={uploadFolderId} onUpload={(result, widget) => {
                 if (result.event !== "success") return ""
                 const info = result.info as cloudinaryresult
                 setpublicId(info.public_id)
                 console.log(result, uploadFolderId, 'result')
-                // const payload = {
-                //     type: info.folder ? info.folder : 'default',
-                //     secureUrl: info.secure_url,
-                //     publicId: info.public_id,
-                //     uploadImagInfo: info,
-                // }
-                // uploadFun(payload)
+                const payload = {
+                    type: folderName ? folderName : 'default',
+                    secureUrl: info.secure_url,
+                    publicId: info.public_id,
+                    uploadImagInfo: info,
+                }
+                uploadFun(payload)
 
             }}>
                 {({ open, }) =>

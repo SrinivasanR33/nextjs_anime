@@ -8,3 +8,18 @@ export const formName = {
 }
 export const URL = "http://localhost:4000/api"
 export const DEFAULT_FOLDER_NAME = "uzwj6aq9"
+
+export const UploadArrayType = [
+    {
+        sno: "0", name: "default", id: "uzwj6aq9"
+    },
+    {
+        sno: "1", name: "one piece", id: "vxq3b8ev"
+    },
+    {
+        sno: "2", name: "Slime", id: "vxq3b8ev"
+    },
+    {
+        sno: "3", name: "Demon", id: "vxq3b8ev"
+    },
+]

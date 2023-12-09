@@ -20,9 +20,10 @@ function Navbar(props: Props) {
             </div>
             <div className="navbar-center hidden  md:flex">
                 <ul className="menu menu-horizontal ">
-                    <li ><Link href={"/home"}>Home</Link></li>
+                    {status === "authenticated" && <li ><Link href={"/home"}>Home</Link></li>}
                     {/* <li className='pt-1'><Link href={"/home/user"}>User</Link></li> */}
-                    {/* {status === "authenticated" && <li className='pt-1'>{session.user?.name}</li>} */}
+                    <li><Link href={"/upload"}>Upload</Link></li>
+                    {status === "authenticated" && <li><Link href={"/imagelist"}>Images</Link></li>}
                     {status === "authenticated" && <li className='hover:text-red-500 translate-x-1'><Link href={"/api/auth/signout"}>
                         <Logoutbutton />
                         {/* <button className='btn btn-secondary btn-sm'>Logout</button> */}
