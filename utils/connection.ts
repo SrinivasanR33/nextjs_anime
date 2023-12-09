@@ -22,7 +22,7 @@ export const connect = async () => {
   });
   const UploadSchema = new mongoose.Schema(
     {
-      type: String,
+      type: { type: String, required: true },
       secureUrl: String,
       publicId: String,
       uploadImagInfo: Object,
