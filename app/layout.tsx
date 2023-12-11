@@ -7,6 +7,7 @@ import Navbar from "./component/Navbar";
 import Layout from "./component/LayoutComponent/Route";
 import { Providers } from "@/redux/provider/provider";
 import { AuthProvider } from "./auth/Provider";
+import { store } from "@/redux/store/store";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,7 +23,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" data-theme={"light"}>
+    <html lang="en" data-theme={store.getState().masterReducer.theme === "dark" ? "dark" : "light"}>
       <body className={inter.className}>
         <AuthProvider>
           <div className="min-h-screen min-w-full overflow-hidden">

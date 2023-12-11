@@ -4,6 +4,8 @@ import { UploadArrayType } from '../commen/CommenName'
 import { UploadImageList } from './imageListService'
 import CustomImage from '../component/ImageComponent/CustomImage'
 import CloudinaryImage from '../component/ImageComponent/CloudinaryImage'
+import DownloadButton from '../component/DownloadButton'
+import DownloadImage from '../component/DownloadButton'
 
 
 
@@ -17,10 +19,11 @@ function ImageList() {
     }
     return (
         <div>
-            <div className='flex gap-7 p-2 text-black'>
+
+            <div className='flex gap-7 p-2'>
                 {/* {folderNameandId} */}
                 <div>
-                    <select className="select select-accent text-black w-full max-w-xs" onChange={handelFilter}>
+                    <select className="select select-accent w-full max-w-xs" onChange={handelFilter}>
                         <option value={""}>Select Folder name</option>
                         {arr.map((val, i) => (
                             <option key={i} value={val.name}>{val.name}</option>
@@ -35,6 +38,7 @@ function ImageList() {
             <div className='grid lg:grid-cols-6 md:grid-cols-8 sm:grid-cols-10 xs:grid-cols-12'>
                 {imageList.map((val: any, i) => (
                     <div key={i} className='p-2'>
+                        <DownloadImage publicId={val.publicId} />
                         <CloudinaryImage publicId={val.publicId} alt='image' />
                     </div>
                 ))}

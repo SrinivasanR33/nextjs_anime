@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useSession } from 'next-auth/react'
 import { Logoutbutton } from './Buttoncomponent'
+import SwitchTheme from './theme/Theme'
 // import SwitchTheme from './theme/Theme'
 interface Props {
     page: String,
@@ -30,10 +31,11 @@ function Navbar(props: Props) {
                     </Link></li>}
                     {status === "authenticated" &&
                         <div className="avatar">
-                            <div className="w-10 rounded-full ring ring-blue-600">
+                            <div className="w-10 rounded-full ring">
                                 <img src={userImage} alt='hi' />
                             </div>
                         </div>}
+                    <SwitchTheme />
                     {status === "loading" && <li className='progress-error'></li>}
                     {/* <li className='pt-1'><Link href={"/help"}>Help</Link></li> */}
                     {/* <li><Link href={"/login"}><button className='btn btn-primary btn-sm hover:shadow-sm '>Login</button> </Link></li> */}
