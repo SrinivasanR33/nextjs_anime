@@ -3,11 +3,13 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 type UserState = {
   Loading: Boolean;
+  theme: string;
   emploeeLoading: Boolean;
 };
 
 const initialState: UserState = {
   Loading: false,
+  theme: "dark",
   emploeeLoading: false,
 };
 
@@ -22,8 +24,11 @@ export const Master = createSlice({
     setLoadingState: (state, action: PayloadAction<Boolean>) => {
       state.emploeeLoading = action.payload;
     },
+    theme: (state, action: PayloadAction<string>) => {
+      state.theme = action.payload;
+    },
   },
 });
 
-export const { setLoadingState, reset } = Master.actions;
+export const { setLoadingState, theme, reset } = Master.actions;
 export default Master.reducer;

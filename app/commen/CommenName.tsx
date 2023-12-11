@@ -8,7 +8,7 @@ export const formName = {
 }
 export const URL = "http://localhost:4000/api"
 export const DEFAULT_FOLDER_NAME = "uzwj6aq9"
-
+export const CLOUD_NAME = "ddaygokti"
 export const UploadArrayType = [
     {
         sno: "0", name: "default", id: "uzwj6aq9"

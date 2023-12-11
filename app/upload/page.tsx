@@ -29,10 +29,10 @@ const UploadPage = () => {
 
     return (
         <>
-            <div className='flex gap-7 p-2 text-black'>
+            <div className='flex gap-7 p-2'>
                 {/* {folderNameandId} */}
                 <div>
-                    <select className="select select-accent text-black w-full max-w-xs" onChange={handelselectFunction}>
+                    <select className="select select-accent w-full max-w-xs" onChange={handelselectFunction}>
                         <option value={DEFAULT_FOLDER_NAME}>Select Folder name</option>
                         {arr.map((val, i) => (
                             <option key={i} value={val.sno}>{val.name}</option>
