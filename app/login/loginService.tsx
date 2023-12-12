@@ -11,5 +11,5 @@ export const LoginUser = async (req: LoginType) => {
     // const user = UserData as unknown as UserL
     console.log(UserData, "UserData")
     // store.dispatch(editUser(user))
-    return UserData
+    return UserData.json()
 }

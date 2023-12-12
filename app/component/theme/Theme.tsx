@@ -1,6 +1,5 @@
 //SwitchTheme.tsx
 'use client'
-import { theme } from "@/redux/actions/masterSlice";
 import { useAppDispatch } from "@/redux/hook/hook";
 import { store } from "@/redux/store/store";
 import React, { useEffect } from "react";
@@ -15,7 +14,7 @@ const SwitchTheme = () => {
     // };
     const handeltheThem = (e: React.ChangeEvent<HTMLInputElement>) => {
         const sun = e.target.checked
-        store.dispatch(theme(sun ? "light" : "dark"))
+        localStorage.setItem("theme", sun ? "light" : "dark")
     }
     //modify data-theme attribute on document.body when theme changes
     // useEffect(() => {

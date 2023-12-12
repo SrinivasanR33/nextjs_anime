@@ -33,7 +33,6 @@ export const User = createSlice({
       state.userData = action.payload;
     },
     AdminState: (state, action: PayloadAction<boolean>) => {
-      // console.log(action, state, action.payload);
       // localStorage.setItem("isAdmin", action.payload.toString());
       state.isAdmin = action.payload;
     },

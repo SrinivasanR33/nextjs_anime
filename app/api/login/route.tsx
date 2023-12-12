@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
             if (isPasswordMatch) {
                 // Passwords match, you can proceed with authentication
                 console.log("Authentication successful!");
-                // store.dispatch(AdminState(true))
+                store.dispatch(AdminState(true))
 
                 return NextResponse.json({ success: true, user });
             } else {
