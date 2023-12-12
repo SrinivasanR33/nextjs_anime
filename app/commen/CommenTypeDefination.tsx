@@ -47,3 +47,7 @@ export interface UploadType {
     publicId: string,
     uploadImagInfo: object,
 }
+export interface UserCredentialsConfig {
+    username: { label: string; type: string; placeholder: string };
+    password: { label: string; type: string; placeholder: string };
+}

@@ -22,8 +22,9 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+
   return (
-    <html lang="en" data-theme={store.getState().masterReducer.theme === "dark" ? "dark" : "light"}>
+    <html lang="en" data-theme={"dark"}>
       <body className={inter.className}>
         <AuthProvider>
           <div className="min-h-screen min-w-full overflow-hidden">

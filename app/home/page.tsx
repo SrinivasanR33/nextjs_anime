@@ -6,8 +6,8 @@ import { authOption } from '../api/auth/[...nextauth]/route'
 async function HomePage() {
     const session = await getServerSession(authOption)
     return (
-        <div className="min-h-screen min-w-full text-black bg-gray-200">
-            <h1>Hello {session&&session.user?.name} </h1>
+        <div className="min-h-screen min-w-full">
+            <h1>Hello {session && session.user?.name} </h1>
         </div>
 
     )
