@@ -1,4 +1,6 @@
 export const companyName = "RS & Software"
+export const tableName1 = "Logged Users List"
+export const tableName2 = "Admin Users List"
 export const formName = {
     name: 'Name',
     email: 'Email',

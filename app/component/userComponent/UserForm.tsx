@@ -104,7 +104,7 @@ const UserForm = () => {
     return (
         <div>
             <div className='px-4'>
-                <div className='grid  lg:grid-cols-3 sm:grid-cols-2 text-black md:grid-cols-2  gap-2'>
+                <div className='grid  lg:grid-cols-5 sm:grid-cols-2 md:grid-cols-2  gap-2'>
                     <div className="form-control w-full max-w-xs">
                         <label className="label">
                             <span className="label-text">{formName.name}</span>
@@ -150,15 +150,15 @@ const UserForm = () => {
                             placeholder={formName.password}
                             className={"input input-bordered w-full max-w-xs input-sm"} />
                     </div>
-                    <div className="form-control pt-6">
-                        <label className="cursor-pointer label">
-                            <span className="label-text">Remember me</span>
-                            <input type="checkbox" checked={stateValue.isAdmin} onChange={(e) => handelCheckBox(e)} className="checkbox checkbox-success" />
-                        </label>
+                    <div className="form-control flex flex-row gap-7 pt-9">
+
+                        <span className="label-text">Admin</span>
+                        <input type="checkbox" checked={stateValue.isAdmin} onChange={(e) => handelCheckBox(e)} className="checkbox checkbox-success" />
+
                     </div>
                 </div>
                 <div className='pt-7 flex gap-2 justify-center '>
-                    <button className='btn btn-neutral btn-sm btn-success' onClick={(e) => onSubmit1()}>Submit</button>
+                    <button className='btn btn-neutral btn-sm btn-success' disabled={!stateValue.email || !stateValue.name || !stateValue.number || !stateValue.isAdmin} onClick={(e) => onSubmit1()}>Submit</button>
                     <button className='btn btn-neutral btn-sm btn-error' onClick={() => resetData()}>Reset</button>
                 </div>
             </div>

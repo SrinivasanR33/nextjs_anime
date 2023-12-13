@@ -6,3 +6,10 @@ export interface UserData {
   password: string;
   name: string;
 }
+export interface UserLoginData {
+  _id?: number;
+  email: string;
+  image: string;
+  emailVerified: boolean | null;
+  name: string;
+}

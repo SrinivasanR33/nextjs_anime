@@ -1,6 +1,6 @@
 //IMPORT MONGOOSE
 import mongoose, { Model } from "mongoose";
-import { UserData } from "./types";
+import { UserData, UserLoginData } from "./types";
 
 // CONNECTING TO MONGOOSE (Get Database Url from .env.local)
 const { DATABASE_URL } = process.env;
@@ -13,12 +13,18 @@ export const connect = async () => {
   console.log("Mongoose Connection Established");
 
   // OUR User SCHEMA
-  const UserSchema = new mongoose.Schema({
+  const AdminUserSchema = new mongoose.Schema({
     email: String,
     number: String,
     isAdmin: Boolean,
     password: String,
     name: String,
+  });
+  const UserSchema = new mongoose.Schema({
+    email: String,
+    image: String,
+    name: String,
+    emailVerified: Boolean,
   });
   const UploadSchema = new mongoose.Schema(
     {
@@ -31,12 +37,15 @@ export const connect = async () => {
       timestamps: true,
     }
   );
+
   // OUR User MODEL
+  const users =
+    mongoose.models.users || mongoose.model<UserLoginData>("users", UserSchema);
   const Adminuser =
     mongoose.models.Adminuser ||
-    mongoose.model<UserData>("Adminuser", UserSchema);
+    mongoose.model<UserData>("Adminuser", AdminUserSchema);
   const Upload =
     mongoose.models.Upload || mongoose.model("Upload", UploadSchema);
 
-  return { conn, Adminuser, Upload };
+  return { conn, Adminuser, Upload, users };
 };
