@@ -1,5 +1,6 @@
 import React from 'react'
 import imag from "../../public/S.png"
+import adminLogo from "../../public/adminlogo.jpg"
 import Image from 'next/image'
 import Link from 'next/link'
 import { useSession } from 'next-auth/react'
@@ -13,31 +14,33 @@ interface Props {
 function Navbar(props: Props) {
     const { page } = props
     const { status, data: session } = useSession()
-    const admin = store.getState().userReducer.isAdmin
     const userImage: string = session && session.user?.image ? session.user.image : "";
+    const admin = session?.user?.name ? false : true
     console.log(session, useSession(), "session")
     return (
-        <div className="navbar h-4">
+        <div className="navbar h-4 border-b-2 border-t-2 border-green-800">
             <div className="flex-1">
-                <a href='/' className="btn btn-ghost normal-case text-xl"><Image src={imag} className="w-8" alt='hi' /></a>
+                <a href='/' className="btn btn-ghost normal-case text-xl"><Image src={imag} className="w-8 transition ease-out hover:scale-125" alt='hi' /></a>
             </div>
             <div className="navbar-center hidden  md:flex">
                 <ul className="menu menu-horizontal ">
-                    {admin || status === "authenticated" && <li ><Link href={"/home"}>Home</Link></li>}
-                    {/* <li className='pt-1'><Link href={"/home/user"}>User</Link></li> */}
-                    <li><Link href={"/upload"}>Upload</Link></li>
-                    {admin || status === "authenticated" && <li><Link href={"/imagelist"}>Images</Link></li>}
-                    {admin || status === "authenticated" && <li className='hover:text-red-500 translate-x-1'><Link href={"/api/auth/signout"}>
+                    {status === "authenticated" && <li ><Link href={"/home"}>Home</Link></li>}
+                    {admin && <li><Link href={"/home/user"}>User</Link></li>}
+                    {admin && <li><Link href={"/upload"}>Upload</Link></li>}
+                    {/* {admin && <li><Link href={"/loginusers"}>Login Users</Link></li>} */}
+                    {status === "authenticated" && <li><Link href={"/imagelist"}>Images</Link></li>}
+                    {status === "authenticated" && <li className='hover:text-red-500 translate-x-1'><Link href={"/api/auth/signout"}>
                         <Logoutbutton />
                         {/* <button className='btn btn-secondary btn-sm'>Logout</button> */}
                     </Link></li>}
                     {status === "authenticated" &&
                         <div className="avatar pr-2">
                             <div className="w-12 rounded-full ring">
-                                <img src={userImage} alt='hi' />
+                                {admin ? <Image src={adminLogo} alt='hi' /> : <img src={userImage} alt="hi" />}
                             </div>
                         </div>}
-                    <SwitchTheme />
+
+                    {/* <SwitchTheme /> */}
                     {/* <li className='pt-1'><Link href={"/help"}>Help</Link></li> */}
                     {/* <li><Link href={"/login"}><button className='btn btn-primary btn-sm hover:shadow-sm '>Login</button> </Link></li> */}
                     {status === "unauthenticated" && <li><Link href={"/api/auth/signin"}><button className='btn btn-accent btn-xs'>Login</button> </Link></li>}

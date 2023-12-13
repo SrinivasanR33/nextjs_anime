@@ -83,12 +83,12 @@ export const authOption: NextAuthOptions = {
       },
     }),
   ],
-  callbacks: {
-    async session({ session, token }) {
-      session.user = token as any;
-      return session;
-    },
-  },
+  // callbacks: {
+  //   async session({ session, token }) {
+  //     session.user = token as any;
+  //     return session;
+  //   },
+  // },
   session: {
     strategy: "jwt",
   },

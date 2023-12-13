@@ -4,8 +4,11 @@ import { DeleteUserAPI, getUserAPI } from '@/app/home/user/userService'
 import { editUser, getUserList } from '@/redux/actions/userSlice'
 import { useAppDispatch, useAppSelector } from '@/redux/hook/hook'
 // import { ActionIcon } from '@/app/commen/InteractionComponents'
+import adminimage from "../../../public/adminlogo.jpg"
 import React from 'react'
 import { FiDelete, FiEdit } from 'react-icons/fi'
+import Image from 'next/image'
+import { tableName2 } from '@/app/commen/CommenName'
 
 
 
@@ -23,7 +26,8 @@ function Usertable() {
     }
 
     return (
-        <div className="overflow-x-auto">
+        <div >
+            <div className='text-center font-bold'>{tableName2}</div>
             {emploeeLoading ?
                 <div role="status" className="w-full animate-pulse">
                     <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 w-full mb-2.5"></div>
@@ -35,8 +39,8 @@ function Usertable() {
                     <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 w-full mb-2.5"></div>
                     <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px] mb-2.5"></div>
                 </div> :
-                <>
-                    <table className="table text-accent table-xs table-pin-rows table-pin-cols">
+                <div className="h-2/3 overflow-auto">
+                    <table className="table">
                         <thead>
                             <tr>
                                 <th></th>
@@ -51,10 +55,22 @@ function Usertable() {
                             {userList.map((val: UserL, i: number) => (
                                 <tr key={i}>
                                     <th>{i + 1}</th>
-                                    <td>{val.name}</td>
+                                    <td>
+                                        <div className="flex items-center gap-3">
+                                            <div className="avatar">
+                                                <div className="mask mask-squircle w-12 h-12">
+                                                    <Image src={adminimage} className='w-8' alt="Avatar Tailwind CSS Component" />
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div className="font-bold">{val.name}</div>
+                                                {/* <div className="text-sm opacity-50">United States</div> */}
+                                            </div>
+                                        </div>
+                                    </td>
                                     <td>{val.email}</td>
                                     <td>{val.number}</td>
-                                    <td className='flex gap-2'>
+                                    <td className='flex gap-2 pt-7'>
                                         <div className='text-blue-500 hover:cursor-pointer' onClick={() => dispatch(editUser(val))}><FiEdit /></div>
                                         <div className='text-red-500 hover:cursor-pointer' onClick={() => handeldelete(val.id)}><FiDelete /></div>
                                     </td>
@@ -62,7 +78,7 @@ function Usertable() {
                             ))}
                         </tbody>
                     </table>
-                </>}
+                </div>}
         </div>
     )
 }
