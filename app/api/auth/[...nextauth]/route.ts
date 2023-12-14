@@ -9,6 +9,8 @@ import * as bcrypt from "bcryptjs";
 import { AdminState } from "@/redux/actions/userSlice";
 import { store } from "@/redux/store/store";
 import { NextResponse } from "next/server";
+import { METHODS } from "http";
+import { URL } from "@/app/commen/CommenName";
 
 interface CustomRequestInternal extends RequestInternal {
   session: {
@@ -83,6 +85,35 @@ export const authOption: NextAuthOptions = {
       },
     }),
   ],
+  callbacks: {
+    async signIn({ account, profile }) {
+      const { users } = await connect();
+
+      // Find user by email
+      const user = await users.findOne({ email: profile?.email });
+      console.log(user, "user");
+      if (user) {
+        const body = {
+          email: profile?.email,
+          name: profile?.name,
+        };
+        console.log(body, profile, "profile&body");
+        const res = await fetch(`${URL}/send-email`, {
+          cache: "no-store",
+          method: "post",
+          body: JSON.stringify(body),
+        });
+        if (res) {
+          // console.log(res, "email response");
+        }
+        // Compare hashed password
+        // console.log(profile, "profile");
+        // console.log(account, "account");
+      }
+
+      return true; // Do different verification for other providers that don't have `email_verified`
+    },
+  },
   // callbacks: {
   //   async session({ session, token }) {
   //     session.user = token as any;
