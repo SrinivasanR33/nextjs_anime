@@ -40,7 +40,7 @@ function Navbar(props: Props) {
                             </div>
                         </div>}
 
-                    {/* <SwitchTheme /> */}
+                    <SwitchTheme />
                     {/* <li className='pt-1'><Link href={"/help"}>Help</Link></li> */}
                     {/* <li><Link href={"/login"}><button className='btn btn-primary btn-sm hover:shadow-sm '>Login</button> </Link></li> */}
                     {status === "unauthenticated" && <li><Link href={"/api/auth/signin"}><button className='btn btn-accent btn-xs'>Login</button> </Link></li>}
