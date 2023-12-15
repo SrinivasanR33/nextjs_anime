@@ -1,28 +1,13 @@
-//SwitchTheme.tsx
+
 'use client'
-import { useAppDispatch } from "@/redux/hook/hook";
-import { store } from "@/redux/store/store";
+import { themeChange } from 'theme-change'
 import React, { useEffect } from "react";
-import { FiMoon, FiSun } from "react-icons/fi";
-import { useLocalStorage } from "usehooks-ts";
 const SwitchTheme = () => {
-    //we store the theme in localStorage to preserve the state on next visit with an initial theme of dark.
-    // const [theme, setTheme] = useLocalStorage("theme", "dark");
-    //toggles the theme
-    // const toggleTheme = () => {
-    //     setTheme(theme === "dark" ? "light" : "dark");
-    // };
     const handeltheThem = (e: React.ChangeEvent<HTMLInputElement>) => {
         const sun = e.target.checked
-        localStorage.setItem("theme", sun ? "light" : "dark")
+        localStorage.setItem("theme", sun ? "cupcake" : "dark")
+        themeChange(false)
     }
-    //modify data-theme attribute on document.body when theme changes
-    // useEffect(() => {
-    //     const body = document.body;
-    //     body.setAttribute("data-theme", theme);
-    // }, [theme]);
-
-
     return (
         <div>
             <label className="swap swap-rotate">
