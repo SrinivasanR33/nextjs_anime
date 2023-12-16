@@ -7,8 +7,19 @@ export async function POST(request: NextRequest) {
         const body = await request.json()
         const { Upload } = await connect();
         const targetType = body.type;
-        const documents = await Upload.find({ type: targetType }).exec();
-        return NextResponse.json({ data: documents }, { status: 200 })
+        const page = body?.page || 1;
+        const pageSize = body?.pageSize || 10; // You can adjust the default pageSize
+
+        // Calculate skip based on pagination parameters
+        const skip = (page - 1) * pageSize;
+
+        // Query documents with pagination
+        const documents = await Upload.find({ type: targetType })
+            .skip(skip)
+            .limit(pageSize)
+            .exec();
+        const totalCount = await Upload.countDocuments({ type: targetType });
+        return NextResponse.json({ data: documents, page, pageSize, totalCount }, { status: 200 });
     } catch (error) {
         console.error('Error:', error);
         return NextResponse.json({ error: error }, { status: 400 })

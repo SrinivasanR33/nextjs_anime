@@ -13,3 +13,9 @@ export interface UserLoginData {
   emailVerified: boolean | null;
   name: string;
 }
+export interface UploadIamgeList {
+  type: string;
+  secureUrl: string;
+  publicId: string;
+  uploadImagInfo: object;
+}

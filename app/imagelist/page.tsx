@@ -2,21 +2,61 @@
 import React, { useState } from 'react'
 import { UploadArrayType } from '../commen/CommenName'
 import { UploadImageList } from './imageListService'
-import CustomImage from '../component/ImageComponent/CustomImage'
 import CloudinaryImage from '../component/ImageComponent/CloudinaryImage'
 import DownloadButton from '../component/DownloadButton'
 import DownloadImage from '../component/DownloadButton'
+import { UploadIamgeList } from '@/utils/types'
+import MyImage from '../component/ImageComponent/CustomImage'
+import { payloadPaginationData } from '../commen/CommenTypeDefination'
+
 
 
 
 function ImageList() {
     const arr = UploadArrayType
     const [imageList, setImageList] = useState([])
+    const [fullscreenImage, setFullscreenImage] = useState<string | null>(null);
     const handelFilter = async (e: React.ChangeEvent<HTMLSelectElement>) => {
-        const payload = e.target.value
+        const payload: payloadPaginationData = { type: e.target.value, page: 1, pageSize: 5 }
         const res = await UploadImageList(payload)
         setImageList(res.data)
     }
+    const openFullscreen = (publicId: string) => {
+        setFullscreenImage(publicId);
+        const element = document.documentElement;
+
+        if (element.requestFullscreen) {
+            element.requestFullscreen();
+        }
+        // else if (element.mozRequestFulscreen) {
+        //     element.mozRequestFullScreen();
+        // } else if (element.webkitRequestFullscreen) {
+        //     element.webkitRequestFullscreen();
+        // } else if (element.msRequestFullscreen) {
+        //     element.msRequestFullscreen();
+        // }
+    };
+
+    const closeFullscreen = () => {
+        setFullscreenImage(null);
+
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        }
+        // else if (document.mozCancelFullScreen) {
+        //     document.mozCancelFullScreen();
+        // } else if (document.webkitExitFullscreen) {
+        //     document.webkitExitFullscreen();
+        // } else if (document.msExitFullscreen) {
+        //     document.msExitFullscreen();
+        // }
+    };
+    const getScreenDimensions = () => {
+        return {
+            width: window.innerWidth,
+            height: window.innerHeight,
+        };
+    };
     return (
         <div>
 
@@ -36,13 +76,31 @@ function ImageList() {
             </div> */}
             </div>
             <div className='grid lg:grid-cols-6 md:grid-cols-8 sm:grid-cols-10 xs:grid-cols-12'>
-                {imageList.map((val: any, i) => (
+                {imageList.map((val: UploadIamgeList, i) => (
                     <div key={i} className='p-2'>
                         <DownloadImage publicId={val.publicId} />
-                        <CloudinaryImage publicId={val.publicId} alt='image' />
+                        <MyImage src={val.secureUrl}
+                            width={500} // Set your desired width
+                            height={300} // Set your desired height
+                            priority={true}
+                            quality={85}
+                            onClick={() => openFullscreen(val.publicId)}
+                            alt='image' />
                     </div>
                 ))}
             </div>
+            {fullscreenImage && (
+                <div className='fullscreen-overlay' onClick={closeFullscreen}>
+                    <MyImage
+                        src={fullscreenImage}
+                        width={getScreenDimensions().width}
+                        height={getScreenDimensions().height}
+                        priority={true}
+                        quality={85}
+                        alt='fullscreen-image'
+                    />
+                </div>
+            )}
         </div>
 
     )
