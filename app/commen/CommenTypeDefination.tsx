@@ -51,3 +51,8 @@ export interface UserCredentialsConfig {
     username: { label: string; type: string; placeholder: string };
     password: { label: string; type: string; placeholder: string };
 }
+export interface payloadPaginationData {
+    type: string;
+    page: number;
+    pageSize: number;
+}

@@ -1,21 +1,15 @@
-// components/CustomImage.tsx
-import NextImage, { ImageProps } from 'next/image';
+// components/MyImage.tsx
+import Image, { ImageProps } from 'next/image';
 
-interface CustomImageProps extends ImageProps {
-  alt: string;
-  defaultSize?: 'small' | 'medium' | 'large'; // Define your default sizes here
+interface MyImageProps extends Omit<ImageProps, 'width' | 'height'> {
+  // Add any additional custom props here
+  width?: number | `${number}`; // Update this line
+  height?: number | `${number}`;
 }
 
-const sizeMap = {
-  small: { width: 200, height: 150 },
-  medium: { width: 400, height: 300 },
-  large: { width: 800, height: 600 },
+const MyImage: React.FC<MyImageProps> = ({ ...rest }) => {
+  // eslint-disable-next-line jsx-a11y/alt-text
+  return <Image {...rest} />;
 };
 
-const CustomImage: React.FC<CustomImageProps> = ({ alt, defaultSize, ...props }) => {
-  const dimensions = sizeMap[defaultSize || 'medium'];
-
-  return <NextImage {...props} alt={alt} {...dimensions} />;
-};
-
-export default CustomImage;
+export default MyImage;

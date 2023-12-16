@@ -1,12 +1,13 @@
 import React from 'react'
 import imag from "../../public/S.png"
 import adminLogo from "../../public/adminlogo.jpg"
-import Image from 'next/image'
 import Link from 'next/link'
 import { useSession } from 'next-auth/react'
 import { Logoutbutton } from './Buttoncomponent'
 import SwitchTheme from './theme/Theme'
 import { store } from '@/redux/store/store'
+import MyImage from './ImageComponent/CustomImage'
+import ImageDetail from './ImageComponent/Fullpagepriview'
 // import SwitchTheme from './theme/Theme'
 interface Props {
     page: String,
@@ -20,8 +21,9 @@ function Navbar(props: Props) {
     return (
         <div className="navbar h-4 border-b-2 border-t-2 border-green-800">
             <div className="flex-1">
-                <a href='/' className="btn btn-ghost normal-case text-xl"><Image src={imag} className="w-8 transition ease-out hover:scale-125" alt='hi' /></a>
+                <a href='/' className="btn btn-ghost normal-case text-xl"><MyImage src={imag} className="w-8 transition ease-out hover:scale-125" alt='hi' /></a>
             </div>
+            <ImageDetail image={"https://res.cloudinary.com/ddaygokti/image/upload/v1702123881/one/gizlvhxuky584wlueugl.jpg"} />
             <div className="navbar-center hidden  md:flex">
                 <ul className="menu menu-horizontal ">
                     {status === "authenticated" && <li ><Link href={"/home"}>Home</Link></li>}
@@ -36,7 +38,7 @@ function Navbar(props: Props) {
                     {status === "authenticated" &&
                         <div className="avatar pr-2">
                             <div className="w-12 rounded-full ring">
-                                {admin ? <Image src={adminLogo} alt='hi' /> : <img src={userImage} alt="hi" />}
+                                {admin ? <MyImage src={adminLogo} alt='hi' /> : <img src={userImage} alt="hi" />}
                             </div>
                         </div>}
 

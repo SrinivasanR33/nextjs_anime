@@ -85,39 +85,31 @@ export const authOption: NextAuthOptions = {
       },
     }),
   ],
-  callbacks: {
-    async signIn({ account, profile }) {
-      const { users } = await connect();
-
-      // Find user by email
-      const user = await users.findOne({ email: profile?.email });
-      console.log(user, "user");
-      if (user) {
-        const body = {
-          email: profile?.email,
-          name: profile?.name,
-        };
-        console.log(body, profile, "profile&body");
-        const res = await fetch(`${URL}/send-email`, {
-          cache: "no-store",
-          method: "post",
-          body: JSON.stringify(body),
-        });
-        if (res) {
-          // console.log(res, "email response");
-        }
-        // Compare hashed password
-        // console.log(profile, "profile");
-        // console.log(account, "account");
-      }
-
-      return true; // Do different verification for other providers that don't have `email_verified`
-    },
-  },
   // callbacks: {
-  //   async session({ session, token }) {
-  //     session.user = token as any;
-  //     return session;
+  //   async signIn({ account, profile }) {
+  //     const { users } = await connect();
+
+  //     // Find user by email
+  //     const user = await users.findOne({ email: profile?.email });
+  //     console.log(user, "user");
+  //     if (user) {
+  //       const body = {
+  //         email: profile?.email,
+  //         name: profile?.name,
+  //       };
+  //       console.log(body, profile, "profile&body");
+  //       const res = await fetch(`${URL}/send-email`, {
+  //         cache: "no-store",
+  //         method: "post",
+  //         body: JSON.stringify(body),
+  //       });
+  //       if (res) {
+  //         // console.log(res, "email response");
+  //       }
+
+  //     }
+
+  //     return true;
   //   },
   // },
   session: {

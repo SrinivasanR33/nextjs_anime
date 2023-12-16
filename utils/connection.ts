@@ -1,6 +1,6 @@
 //IMPORT MONGOOSE
 import mongoose, { Model } from "mongoose";
-import { UserData, UserLoginData } from "./types";
+import { UploadIamgeList, UserData, UserLoginData } from "./types";
 
 // CONNECTING TO MONGOOSE (Get Database Url from .env.local)
 const { DATABASE_URL } = process.env;
@@ -45,7 +45,8 @@ export const connect = async () => {
     mongoose.models.Adminuser ||
     mongoose.model<UserData>("Adminuser", AdminUserSchema);
   const Upload =
-    mongoose.models.Upload || mongoose.model("Upload", UploadSchema);
+    mongoose.models.Upload ||
+    mongoose.model<UploadIamgeList>("Upload", UploadSchema);
 
   return { conn, Adminuser, Upload, users };
 };
