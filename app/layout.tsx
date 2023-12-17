@@ -29,9 +29,12 @@ export default function RootLayout({
         <AuthProvider>
           <div className="min-h-screen min-w-full overflow-hidden">
             {/* <Navbar page="main" /> */}
-            <Layout />
+
             <main>
-              <Providers>{children}</Providers>
+              <Providers>
+                <Layout />
+                {children}
+              </Providers>
             </main>
           </div>
         </AuthProvider>

@@ -23,7 +23,7 @@ function Navbar(props: Props) {
             <div className="flex-1">
                 <a href='/' className="btn btn-ghost normal-case text-xl"><MyImage src={imag} className="w-8 transition ease-out hover:scale-125" alt='hi' /></a>
             </div>
-            <ImageDetail image={"https://res.cloudinary.com/ddaygokti/image/upload/v1702123881/one/gizlvhxuky584wlueugl.jpg"} />
+            {/* <ImageDetail image={"https://res.cloudinary.com/ddaygokti/image/upload/v1702123881/one/gizlvhxuky584wlueugl.jpg"} /> */}
             <div className="navbar-center hidden  md:flex">
                 <ul className="menu menu-horizontal ">
                     {status === "authenticated" && <li ><Link href={"/home"}>Home</Link></li>}

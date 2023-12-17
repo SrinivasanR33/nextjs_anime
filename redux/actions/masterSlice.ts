@@ -5,11 +5,13 @@ type UserState = {
   Loading: Boolean;
   theme: string;
   emploeeLoading: Boolean;
+  fullScreen:Boolean
 };
 
 const initialState: UserState = {
   Loading: false,
   theme: "dark",
+  fullScreen:false,
   emploeeLoading: false,
 };
 
@@ -24,11 +26,14 @@ export const Master = createSlice({
     setLoadingState: (state, action: PayloadAction<Boolean>) => {
       state.emploeeLoading = action.payload;
     },
+    setFullScreenState: (state, action: PayloadAction<Boolean>) => {
+      state.fullScreen = action.payload;
+    },
     theme: (state, action: PayloadAction<string>) => {
       state.theme = action.payload;
     },
   },
 });
 
-export const { setLoadingState, theme, reset } = Master.actions;
+export const { setLoadingState, theme,setFullScreenState, reset } = Master.actions;
 export default Master.reducer;
