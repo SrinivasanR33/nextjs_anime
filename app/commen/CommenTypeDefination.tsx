@@ -52,7 +52,7 @@ export interface UserCredentialsConfig {
     password: { label: string; type: string; placeholder: string };
 }
 export interface payloadPaginationData {
-    type: string;
+    type: string | undefined;
     page: number;
     pageSize: number;
 }

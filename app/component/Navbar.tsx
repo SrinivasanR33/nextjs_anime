@@ -36,9 +36,9 @@ function Navbar(props: Props) {
                         {/* <button className='btn btn-secondary btn-sm'>Logout</button> */}
                     </Link></li>}
                     {status === "authenticated" &&
-                        <div className="avatar pr-2">
+                        <div className="avatar h-10 w-12 pr-2">
                             <div className="w-12 rounded-full ring">
-                                {admin ? <MyImage src={adminLogo} alt='hi' /> : <img src={userImage} alt="hi" />}
+                                {admin ? <MyImage src={adminLogo} alt='hi' /> : <MyImage height={500} width={500} src={userImage} alt="hi" />}
                             </div>
                         </div>}
 
