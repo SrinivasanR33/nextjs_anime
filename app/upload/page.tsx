@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import UploadType from '../component/uploadComponent/Upload';
 import { DEFAULT_FOLDER_NAME, UploadArrayType } from '../commen/CommenName';
+import SelectField from '../component/SelectComponent';
 
 interface cloudinaryresult {
     public_id: string

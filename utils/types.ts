@@ -16,6 +16,7 @@ export interface UserLoginData {
 export interface UploadIamgeList {
   type: string;
   secureUrl: string;
+  fileType: string;
   publicId: string;
   uploadImagInfo: object;
 }

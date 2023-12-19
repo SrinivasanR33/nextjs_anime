@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { UploadArrayType } from '../commen/CommenName'
 import { UploadImageList } from './imageListService'
 import CloudinaryImage from '../component/ImageComponent/CloudinaryImage'
@@ -8,21 +8,41 @@ import DownloadImage from '../component/DownloadButton'
 import { UploadIamgeList } from '@/utils/types'
 import MyImage from '../component/ImageComponent/CustomImage'
 import { payloadPaginationData } from '../commen/CommenTypeDefination'
-import { useAppDispatch } from '@/redux/hook/hook'
-import { setFullScreenState } from '@/redux/actions/masterSlice'
+import { useAppDispatch, useAppSelector } from '@/redux/hook/hook'
+import { setFullScreenState, setLoadingState } from '@/redux/actions/masterSlice'
+import { ImageLoading } from '../commen/LoadingComponets'
 
 
-
+interface pageInfo {
+    page: number;
+    pageSize: number;
+    totalCount: number;
+}
 
 function ImageList() {
     const arr = UploadArrayType
-    const [imageList, setImageList] = useState([])
+    const [imageList, setImageList] = useState<UploadIamgeList[] | []>([])
+    const [selectedType, setSelectedType] = useState<string>()
+    const [pageInfo, setPageInfo] = useState<pageInfo>({
+        page: 1, pageSize: 25, totalCount: 0
+    })
     const dispatch = useAppDispatch()
+    const listInnerRef = useRef(null)
+    const { emploeeLoading } = useAppSelector((state) => state.masterReducer)
     const [fullscreenImage, setFullscreenImage] = useState<string | null>(null);
     const handelFilter = async (e: React.ChangeEvent<HTMLSelectElement>) => {
-        const payload: payloadPaginationData = { type: e.target.value, page: 1, pageSize: 5 }
-        const res = await UploadImageList(payload)
-        setImageList(res.data)
+        try {
+            dispatch(setLoadingState(true))
+            const payload: payloadPaginationData = { type: e.target.value, page: pageInfo.page, pageSize: pageInfo.pageSize }
+            const res = await UploadImageList(payload)
+            dispatch(setLoadingState(false))
+            setSelectedType(e.target.value)
+            setPageInfo((per: pageInfo) => ({ ...per, page: res.page, pageSize: res.pageSize, totalCount: res.totalCount }))
+            setImageList(res.data)
+        } catch (error) {
+            dispatch(setLoadingState(false))
+
+        }
     }
     const openFullscreen = (publicId: string) => {
         setFullscreenImage(publicId);
@@ -63,6 +83,27 @@ function ImageList() {
             height: window.innerHeight,
         };
     };
+    const onScrollFunction = async () => {
+        try {
+            const payload: payloadPaginationData = { type: selectedType, page: pageInfo.page, pageSize: pageInfo.pageSize }
+            const res = await UploadImageList(payload)
+            setPageInfo((per: pageInfo) => ({ ...per, page: res.page, pageSize: res.pageSize + 1, totalCount: res.totalCount }))
+            setImageList((per) => [...res.data, ...per])
+        } catch (error) {
+
+        }
+    };
+    const onScroll = () => {
+        if (listInnerRef.current) {
+            const { scrollTop, scrollHeight, clientHeight } = listInnerRef.current;
+
+            if (scrollTop + clientHeight === scrollHeight) {
+                // if (pageInfo?.hasNext) {
+                onScrollFunction();
+                // }
+            }
+        }
+    };
     return (
         <>
             {!fullscreenImage ? <>
@@ -82,19 +123,25 @@ function ImageList() {
                 <button className='btn btn-accent btn-sm'>filter</button>
             </div> */}
                     </div>
-                    <div className='grid lg:grid-cols-6 md:grid-cols-8 sm:grid-cols-10 xs:grid-cols-12'>
-                        {imageList.map((val: UploadIamgeList, i) => (
-                            <div key={i} className='p-2'>
-                                <DownloadImage publicId={val.publicId} />
-                                <MyImage src={val.secureUrl}
-                                    width={500} // Set your desired width
-                                    height={300} // Set your desired height
-                                    priority={true}
-                                    quality={85}
-                                    onClick={() => openFullscreen(val.secureUrl)}
-                                    alt='image' />
-                            </div>
-                        ))}
+                    <div ref={listInnerRef} onScroll={onScroll} className='grid lg:grid-cols-6 md:grid-cols-8 sm:grid-cols-10 xs:grid-cols-12 gap-3 overflow-y-auto' style={{ maxHeight: '750px' }}>
+                        {emploeeLoading ?
+                            <ImageLoading num={24} />
+                            :
+                            <>
+                                {imageList.map((val: UploadIamgeList, i) => (
+                                    <div key={i} className='p-2'>
+                                        <DownloadImage publicId={val.publicId} />
+                                        <MyImage src={val.secureUrl}
+                                            width={500} // Set your desired width
+                                            height={300} // Set your desired height
+                                            priority={true}
+                                            quality={85}
+                                            onClick={() => openFullscreen(val.secureUrl)}
+                                            alt='image' />
+                                    </div>
+                                ))}
+                            </>
+                        }
                     </div>
                 </div>
             </> : <><div className='fullscreen-overlay' onClick={closeFullscreen}>

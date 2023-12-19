@@ -6,6 +6,7 @@ import { CldImage, CldUploadWidget } from 'next-cloudinary';
 import { useState } from 'react';
 
 interface cloudinaryresult {
+    resource_type: string;
     folder: string;
     public_id: string;
     secure_url: string;
@@ -33,6 +34,7 @@ const UploadType: React.FC<props> = (props) => {
                 console.log(result, uploadFolderId, 'result')
                 const payload = {
                     type: folderName ? folderName : 'default',
+                    fileType: info.resource_type,
                     secureUrl: info.secure_url,
                     publicId: info.public_id,
                     uploadImagInfo: info,
@@ -44,7 +46,7 @@ const UploadType: React.FC<props> = (props) => {
                     <button className='btn btn-primary' onClick={() => open()}>Upload</button>
                 }
             </CldUploadWidget>
-            {publicId && <CldImage src={publicId} width={300} height={150} alt='' />}
+            {/* {publicId && <CldImage src={publicId} width={300} height={150} alt='' />} */}
         </>
 
     )

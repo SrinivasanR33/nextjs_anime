@@ -30,6 +30,7 @@ export const connect = async () => {
     {
       type: { type: String, required: true },
       secureUrl: String,
+      fileType: String,
       publicId: String,
       uploadImagInfo: Object,
     },
@@ -49,4 +50,8 @@ export const connect = async () => {
     mongoose.model<UploadIamgeList>("Upload", UploadSchema);
 
   return { conn, Adminuser, Upload, users };
+};
+export const scheman = async () => {
+  const { Adminuser, Upload, users } = await connect();
+  return { Adminuser, Upload, users };
 };
