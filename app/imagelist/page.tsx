@@ -119,9 +119,6 @@ function ImageList() {
 
                             </select>
                         </div>
-                        {/* <div>
-                <button className='btn btn-accent btn-sm'>filter</button>
-            </div> */}
                     </div>
                     <div ref={listInnerRef} onScroll={onScroll} className='grid lg:grid-cols-6 md:grid-cols-8 sm:grid-cols-10 xs:grid-cols-12 gap-3 overflow-y-auto' style={{ maxHeight: '750px' }}>
                         {emploeeLoading ?

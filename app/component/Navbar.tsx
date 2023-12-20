@@ -31,6 +31,7 @@ function Navbar(props: Props) {
                     {admin && <li><Link href={"/upload"}>Upload</Link></li>}
                     {/* {admin && <li><Link href={"/loginusers"}>Login Users</Link></li>} */}
                     {status === "authenticated" && <li><Link href={"/imagelist"}>Images</Link></li>}
+                    {status === "authenticated" && <li><Link href={"/video"}>Video</Link></li>}
                     {status === "authenticated" && <li className='hover:text-red-500 translate-x-1'><Link href={"/api/auth/signout"}>
                         <Logoutbutton />
                         {/* <button className='btn btn-secondary btn-sm'>Logout</button> */}
