@@ -56,3 +56,7 @@ export interface payloadPaginationData {
     page: number;
     pageSize: number;
 }
+export interface videopayload {
+    type: string | undefined,
+    fileType: string,
+}
