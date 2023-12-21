@@ -127,7 +127,7 @@ function ImageList() {
                             <>
                                 {imageList.map((val: UploadIamgeList, i) => (
                                     <div key={i} className='p-2'>
-                                        <DownloadImage publicId={val.publicId} />
+                                        <DownloadImage publicId={val.publicId} type={""} />
                                         <MyImage src={val.secureUrl}
                                             width={500} // Set your desired width
                                             height={300} // Set your desired height

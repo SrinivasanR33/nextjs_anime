@@ -6,9 +6,10 @@ import { FaDownload } from "react-icons/fa6";
 import { CLOUD_NAME } from '../commen/CommenName';
 interface publictype {
     publicId: string
+    type: string
 }
 const DownloadImage: React.FC<publictype> = (props) => {
-    const { publicId } = props
+    const { publicId, type } = props
 
     const handleDownload = () => {
         try {
@@ -29,7 +30,7 @@ const DownloadImage: React.FC<publictype> = (props) => {
                     // Create a link element and trigger the download
                     const link = document.createElement('a');
                     link.href = blobUrl;
-                    link.download = `${publicId}.jpg`;
+                    link.download = type === "video" ? "downloaded-video-${publicId}.mp4" : `${publicId}.jpg`;
                     link.click();
 
                     // Revoke the blob URL to free up resources
