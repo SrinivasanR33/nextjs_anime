@@ -1,0 +1,47 @@
+.container {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    /* Hide overflow content */
+}
+
+.top {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 50%;
+}
+
+.bottom,
+.bottom1 {
+    display: flex;
+    flex: 1;
+    /* Apply the animation to both bottom and bottom1 */
+    animation: changePage 10s infinite;
+}
+
+.box {
+    flex: 1;
+    border: 1px solid #000;
+    margin: 8px;
+}
+
+/* Add hide class to hide top boxes */
+.hide {
+    display: none;
+}
+
+/* Add animation keyframes */
+/* @keyframes changePage {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(50%);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+} */

@@ -1,24 +1,47 @@
-import React from 'react'
-import { getServerSession } from 'next-auth'
-import { authOption } from '../api/auth/[...nextauth]/route'
-import backgroundImage from "../../public/home/home2.jpg"
-import Image from 'next/image'
+"use client"
+import React, { useState, useEffect } from 'react';
+import styles from './styles.module.css';
 
-async function HomePage() {
-    const session = await getServerSession(authOption)
+const HomePage = () => {
+    const [showTopBoxes, setShowTopBoxes] = useState(true);
+
+    useEffect(() => {
+        // Hide top boxes after 5 seconds
+        const hideTimeout = setTimeout(() => {
+            setShowTopBoxes(false);
+
+            // Reset to default after 10 seconds
+            const showTimeout = setTimeout(() => {
+                setShowTopBoxes(true);
+            }, 10000);
+
+            return () => clearTimeout(showTimeout);
+        }, 5000);
+
+        return () => clearTimeout(hideTimeout);
+    }, []);
+
     return (
-        <div className='flex min-h-full min-w-full bg-white'>
-            <div className='min-h-screen w-1/2 bg-green-300 rounded-r-full overflow-auto'>
+        <div className={styles.container}>
+            {/* Top 50% */}
+            <div className={`${styles.top} ${showTopBoxes ? '' : styles.hide}`}>
+                <div className={styles.box}>Box 1</div>
+                <div className={styles.box}>Box 2</div>
             </div>
-            <Image
-                src={backgroundImage}
-                className='min-h-screen  w-1/2'
-                alt='Background Image'
-            // layout='full'
-            />
+
+            {/* Bottom 50% */}
+            <div className='flex flex-1'>
+                <div className={`${styles.bottom} ${styles.animation}`}>
+                    <div className={styles.box}>Box 3</div>
+                    <div className={styles.box}>Box 4</div>
+                </div>
+                <div className={`${styles.bottom1} ${styles.animation}`}>
+                    <div className={styles.box}>Box 5</div>
+                    <div className={styles.box}>Box 6</div>
+                </div>
+            </div>
         </div>
+    );
+};
 
-    )
-}
-
-export default HomePage
+export default HomePage;
