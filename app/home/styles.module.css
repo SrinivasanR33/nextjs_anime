@@ -1,23 +1,28 @@
 .container {
     display: flex;
     height: 100vh;
-    overflow: hidden;
-    /* Hide overflow content */
+    /* overflow: hidden; */
+}
+
+.hidecontainer {
+    height: 100vh;
+    /* overflow: hidden; */
 }
 
 .top {
     display: flex;
     flex-direction: column;
     flex: 1;
-    height: 50%;
+    height: 70%;
+    transition: height 1s;
 }
 
-.bottom,
-.bottom1 {
+.bottom {
     display: flex;
     flex: 1;
-    /* Apply the animation to both bottom and bottom1 */
-    animation: changePage 10s infinite;
+    height: 70%;
+    /* padding-right: 60px; */
+    transition: height 1s;
 }
 
 .box {
@@ -26,22 +31,17 @@
     margin: 8px;
 }
 
-/* Add hide class to hide top boxes */
-.hide {
-    display: none;
+/* Separate class for hiding the top */
+.hideTop {
+    height: 0;
+    visibility: hidden;
+    transition: height 1s;
 }
 
-/* Add animation keyframes */
-/* @keyframes changePage {
-    0% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(50%);
-    }
-
-    100% {
-        transform: translateY(0);
-    }
-} */
+/* Separate class for showing the bottom */
+.showBottom {
+    flex: 1;
+    height: 70%;
+    transition: height 1s;
+    /* width: 100%; */
+}
