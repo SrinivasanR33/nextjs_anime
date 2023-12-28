@@ -21,6 +21,7 @@ function Usertable() {
         await getUserAPI()
     }
     const handeldelete = async (id: string) => {
+        console.log(id, "er")
         await DeleteUserAPI(id)
         await apicall()
     }
@@ -72,7 +73,7 @@ function Usertable() {
                                     <td>{val.number}</td>
                                     <td className='flex gap-2 pt-7'>
                                         <div className='text-blue-500 hover:cursor-pointer' onClick={() => dispatch(editUser(val))}><FiEdit /></div>
-                                        <div className='text-red-500 hover:cursor-pointer' onClick={() => handeldelete(val.id)}><FiDelete /></div>
+                                        <div className='text-red-500 hover:cursor-pointer' onClick={() => handeldelete(val._id)}><FiDelete /></div>
                                     </td>
                                 </tr>
                             ))}

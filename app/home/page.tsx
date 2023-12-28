@@ -25,7 +25,6 @@ const HomePage = () => {
                 <div className={styles.box}>Box 1</div>
                 <div className={styles.box}>Box 2</div>
             </div>
-
             {/* Bottom 50% */}
             <div className={`${styles.bottom} ${showTopBoxes ? "" : styles.showBottom}`}>
                 <div className={styles.box}>Box 3</div>

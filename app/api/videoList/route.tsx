@@ -1,3 +1,4 @@
+import { connectUpload } from "@/utils/CommenSchema";
 import { connect } from "@/utils/connection";
 import { NextRequest, NextResponse } from "next/server"
 
@@ -5,7 +6,7 @@ import { NextRequest, NextResponse } from "next/server"
 export async function POST(request: NextRequest) {
     try {
         const body = await request.json()
-        const { Upload } = await connect();
+        const Upload = await connectUpload();
         const targetType = body.type;
         const page = body?.page || 1;
         const pageSize = body?.pageSize || 10; // You can adjust the default pageSize
