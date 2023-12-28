@@ -1,6 +1,11 @@
 //IMPORT MONGOOSE
 import mongoose, { Model } from "mongoose";
-import { UploadIamgeList, UserData, UserLoginData } from "./types";
+import {
+  UploadIamgeList,
+  UploadMasterType,
+  UserData,
+  UserLoginData,
+} from "./types";
 
 // CONNECTING TO MONGOOSE (Get Database Url from .env.local)
 const { DATABASE_URL } = process.env;
@@ -38,10 +43,24 @@ export const connect = async () => {
       timestamps: true,
     }
   );
+  const UploadMasterSchema = new mongoose.Schema(
+    {
+      name: String,
+      codeName: String,
+      uploadId: String,
+      isActive: Boolean,
+    },
+    {
+      timestamps: true,
+    }
+  );
 
   // OUR User MODEL
   const users =
     mongoose.models.users || mongoose.model<UserLoginData>("users", UserSchema);
+  const UploadMasters =
+    mongoose.models.masters ||
+    mongoose.model<UploadMasterType>("masters", UploadMasterSchema);
   const Adminuser =
     mongoose.models.Adminuser ||
     mongoose.model<UserData>("Adminuser", AdminUserSchema);
@@ -49,7 +68,7 @@ export const connect = async () => {
     mongoose.models.Upload ||
     mongoose.model<UploadIamgeList>("Upload", UploadSchema);
 
-  return { conn, Adminuser, Upload, users };
+  return { conn, Adminuser, Upload, users, UploadMasters };
 };
 export const scheman = async () => {
   const { Adminuser, Upload, users } = await connect();

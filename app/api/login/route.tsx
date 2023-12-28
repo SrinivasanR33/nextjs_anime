@@ -4,11 +4,12 @@ import { connect } from "@/utils/connection";
 import { store } from "@/redux/store/store";
 import { AdminState } from "@/redux/actions/userSlice";
 import { redirect } from "next/dist/server/api-utils";
+import { connectAdminUser } from "@/utils/CommenSchema";
 
 export async function POST(request: NextRequest) {
     try {
         const body = await request.json();
-        const { Adminuser } = await connect();
+        const Adminuser = await connectAdminUser();
 
         // Find user by email
         const user = await Adminuser.findOne({ email: body.email });

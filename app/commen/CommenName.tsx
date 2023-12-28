@@ -25,3 +25,25 @@ export const UploadArrayType = [
         sno: "3", name: "Demon", id: "vxq3b8ev"
     },
 ]
+export const SuccessMessage = {
+    defaultCreate: 'Created Successfully',
+    defaultUpdate: 'Updated Successfully',
+    defaultDelete: 'Deleted Successfully',
+    defaultget: "List feached Successfully"
+}
+export const ErrorMessage = {
+
+    defaultDelete: 'Id is required',
+    defaultget: "Id is required"
+}
+export const statusCode = {
+    ok: 200,
+    create: 201,
+    accepted: 202,
+    badRequest: 400,
+    notFound: 404,
+    notAcceptable: 406
+}
+export const IconStyle = {
+    sideBarIcon: "text-xl p-2.5 bg-primary rounded-full",
+};

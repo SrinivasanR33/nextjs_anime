@@ -20,3 +20,9 @@ export interface UploadIamgeList {
   publicId: string;
   uploadImagInfo: object;
 }
+export interface UploadMasterType {
+  name: string;
+  codeName: string;
+  uploadId: string;
+  isActive: string;
+}

@@ -14,7 +14,7 @@ export type User = {
     number: number
 };
 export interface UserL {
-    id: string;
+    _id: string;
     email: string;
     name: string;
     number: string;
@@ -59,4 +59,8 @@ export interface payloadPaginationData {
 export interface videopayload {
     type: string | undefined,
     fileType: string,
+}
+export interface IconTag {
+    classname: string,
+    element: React.ComponentType<any>,
 }

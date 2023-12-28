@@ -2,18 +2,20 @@ import { NextRequest, NextResponse } from "next/server";
 import schema from "./schema";
 import * as bcrypt from 'bcryptjs';
 import { connect } from "@/utils/connection";
+import { connectAdminUser } from "@/utils/CommenSchema";
 interface Props {
     params: {
         id: number
     }
 }
+
 export async function GET() {
-    const { Adminuser } = await connect();
+    const Adminuser = await connectAdminUser();
     const user = await Adminuser.find()
     return NextResponse.json(user)
 }
 export async function POST(request: NextRequest) {
-    const { Adminuser } = await connect();
+    const Adminuser = await connectAdminUser();
     const body = await request.json()
     const validate = schema.safeParse(body)
     if (!validate.success) {
@@ -25,7 +27,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(user)
 }
 export async function PUT(request: NextRequest) {
-    const { Adminuser } = await connect();
+    const Adminuser = await connectAdminUser();
     const body = await request.json()
     const validate = schema.safeParse(body)
     const findUser = await Adminuser.findById({ id: body.id })
