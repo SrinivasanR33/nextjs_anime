@@ -64,3 +64,7 @@ export interface IconTag {
     classname: string,
     element: React.ComponentType<any>,
 }
+export interface homeImageList{
+    id:number,
+    image:string
+}

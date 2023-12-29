@@ -1,3 +1,5 @@
+import { homeImageList } from "./CommenTypeDefination"
+
 export const companyName = "RS & Software"
 export const tableName1 = "Logged Users List"
 export const tableName2 = "Admin Users List"
@@ -49,3 +51,23 @@ export const IconStyle = {
     sideBarSubIcon: "text-xl p-2 text-success bg-base-300 rounded-full",
     navbarIcon: "text-3xl p-2"
 };
+export const loacalImage = {
+    demon: {
+        demon1: require("../../public/onepiece/onepeice.jpg"),
+        demon2: require("../../public/demon/demon2.jpg")
+    }
+}
+export const landingpageImageList: homeImageList[] = [
+    { id: 1, image: loacalImage.demon.demon1 },
+    { id: 2, image: loacalImage.demon.demon2 },
+    { id: 3, image: loacalImage.demon.demon2 },
+    { id: 4, image: loacalImage.demon.demon2 },
+    { id: 5, image: loacalImage.demon.demon2 },
+]
+export const landingpageImageList2: homeImageList[] = [
+    { id: 7, image: loacalImage.demon.demon2 },
+    { id: 8, image: loacalImage.demon.demon2 },
+    { id: 6, image: loacalImage.demon.demon1 },
+    { id: 9, image: loacalImage.demon.demon2 },
+    { id: 10, image: loacalImage.demon.demon2 },
+]
