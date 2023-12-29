@@ -53,7 +53,7 @@ const UserForm = () => {
     }, [])
     useEffect(() => {
         setstateValue({
-            id: userData.id,
+            id: userData._id,
             name: userData.name,
             email: userData.email,
             number: userData.number,
@@ -63,7 +63,7 @@ const UserForm = () => {
     }, [userData])
 
     const onSubmit1 = async () => {
-        if (userData.id) {
+        if (userData._id) {
             await CreateUserAPI(stateValue, "put")
             await apicall()
             resetData()
@@ -93,7 +93,7 @@ const UserForm = () => {
             password: ''
         })
         dispatch(editUser({
-            id: '',
+            _id: '',
             name: "",
             email: "",
             number: "",

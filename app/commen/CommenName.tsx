@@ -46,4 +46,5 @@ export const statusCode = {
 }
 export const IconStyle = {
     sideBarIcon: "text-xl p-2.5 bg-primary rounded-full",
+    navbarIcon: "text-3xl p-2"
 };

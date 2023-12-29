@@ -6,6 +6,7 @@ import NextAuth, { NextAuthOptions, RequestInternal } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import { connect } from "@/utils/connection";
 import * as bcrypt from "bcryptjs";
+import type { Adapter } from "next-auth/adapters";
 import { AdminState } from "@/redux/actions/userSlice";
 import { store } from "@/redux/store/store";
 import { NextResponse } from "next/server";
@@ -19,7 +20,7 @@ interface CustomRequestInternal extends RequestInternal {
 }
 
 export const authOption: NextAuthOptions = {
-  adapter: MongoDBAdapter(clientPromise),
+  adapter: MongoDBAdapter(clientPromise) as Adapter,
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
@@ -85,33 +86,30 @@ export const authOption: NextAuthOptions = {
       },
     }),
   ],
-  // callbacks: {
-  //   async signIn({ account, profile }) {
-  //     const { users } = await connect();
-
-  //     // Find user by email
-  //     const user = await users.findOne({ email: profile?.email });
-  //     console.log(user, "user");
-  //     if (user) {
-  //       const body = {
-  //         email: profile?.email,
-  //         name: profile?.name,
-  //       };
-  //       console.log(body, profile, "profile&body");
-  //       const res = await fetch(`${URL}/send-email`, {
-  //         cache: "no-store",
-  //         method: "post",
-  //         body: JSON.stringify(body),
-  //       });
-  //       if (res) {
-  //         // console.log(res, "email response");
-  //       }
-
-  //     }
-
-  //     return true;
-  //   },
-  // },
+  callbacks: {
+    // async signIn({ account, profile }) {
+    //   const { users } = await connect();
+    //   // Find user by email
+    //   const user = await users.findOne({ email: profile?.email });
+    //   console.log(user, "user");
+    //   if (user) {
+    //     const body = {
+    //       email: profile?.email,
+    //       name: profile?.name,
+    //     };
+    //     console.log(body, profile, "profile&body");
+    //     const res = await fetch(`${URL}/send-email`, {
+    //       cache: "no-store",
+    //       method: "post",
+    //       body: JSON.stringify(body),
+    //     });
+    //     if (res) {
+    //       // console.log(res, "email response");
+    //     }
+    //   }
+    //   return true;
+    // },
+  },
   session: {
     strategy: "jwt",
   },
