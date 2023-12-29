@@ -1,4 +1,6 @@
 "use client"
+import { AdminState } from '@/redux/actions/userSlice';
+import { store } from '@/redux/store/store';
 // components/LogoutButton.tsx
 
 import { signOut, useSession } from 'next-auth/react';
@@ -10,6 +12,7 @@ const LogoutButton: React.FC = () => {
 
     const handleLogout = async () => {
         // Sign out the user
+        store.dispatch(AdminState(false))
         const data = await signOut({ callbackUrl: "/" });
 
         // Redirect to a specific page after logout (optional)

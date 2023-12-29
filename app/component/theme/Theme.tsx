@@ -5,7 +5,7 @@ import React, { useEffect } from "react";
 const SwitchTheme = () => {
     const handeltheThem = (e: React.ChangeEvent<HTMLInputElement>) => {
         const sun = e.target.checked
-        localStorage.setItem("theme", sun ? "cupcake" : "dark")
+        localStorage.setItem("theme", sun ? "light" : "dark")
         themeChange(false)
     }
     return (

@@ -1,38 +1,39 @@
 "use client"
+// components/FlipBox.tsx
 import React, { useState, useEffect } from 'react';
-// Import your Tailwind CSS styles
+import styles from './styles.module.css';
 
-const RootPageHeader: React.FC = () => {
-    const [animate, setAnimate] = useState<boolean>(false);
+interface FlipBoxProps {
+    content: string;
+}
+
+const FlipBox: React.FC<FlipBoxProps> = ({ content }) => {
+    const [flipped, setFlipped] = useState(false);
+    const [boxes, setBoxes] = useState([1, 2, 3, 4, 5]);
+
 
     useEffect(() => {
-        // Trigger animation after component mounts
-        setAnimate(true);
-
-        // Clear animation after 5 seconds
-        const timeout = setTimeout(() => {
-            setAnimate(false);
+        const interval = setInterval(() => {
+            // Toggle between the first and second sets of boxes
+            setFlipped(!flipped)
+            setBoxes((prevBoxes) => (prevBoxes[0] === 1 ? [6, 7, 8, 9, 10] : [1, 2, 3, 4, 5]));
         }, 5000);
 
-        return () => clearTimeout(timeout);
-    }, []);
+        // Clear the interval when the component unmounts or when needed
+        return () => clearInterval(interval);
+    }, [flipped]);
 
     return (
-        <div className="grid grid-cols-4 h-screen">
-            {/* Initial 4 boxes */}
-            {[1, 2, 3, 4].map((index) => (
-                <div key={index} className="border-solid border-primary-focus">hfis</div>
-            ))}
-
-            {/* Additional 4 boxes for animation */}
-            {[5, 6, 7, 8].map((index) => (
-                <div
-                    key={index}
-                    className={`box ${animate ? 'animate-in' : 'animate-out'}`}
-                ></div>
-            ))}
+        <div className={styles.container}>
+            <div className={`${styles.box_container} ${flipped ? styles.flipped : ''}`}>
+                {boxes.map((box) => (
+                    <div className={styles.box} key={box}>
+                        {box}
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };
 
-export default RootPageHeader;
+export default FlipBox;

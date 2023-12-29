@@ -10,8 +10,14 @@ import MyImage from './ImageComponent/CustomImage'
 import ImageDetail from './ImageComponent/Fullpagepriview'
 import { FiHome } from 'react-icons/fi'
 import { IconStyle } from '../commen/CommenName'
+import { TbWorldUpload } from "react-icons/tb";
+import { RiContactsBookUploadFill } from "react-icons/ri";
+import { ImUpload } from "react-icons/im";
+import { FaRegImage } from "react-icons/fa";
+import { MdOndemandVideo } from "react-icons/md";
 // import SignOutPage from './Logout'
 import LogoutButton from './Logout'
+import { FaRegCircleUser } from 'react-icons/fa6'
 // import SwitchTheme from './theme/Theme'
 interface Props {
     page: String,
@@ -32,6 +38,14 @@ function Navbar(props: Props) {
                     {status === "authenticated" && <li ><Link href={"/home"}>Home</Link></li>}
                     {status === "authenticated" && admin && <li><Link href={"/home/user"}>User</Link></li>}
                     {status === "authenticated" && admin && <li><Link href={"/upload"}>Upload</Link></li>}
+                    {status === "authenticated" && admin && <li>
+                        <div className="dropdown dropdown-hover dropdown-bottom">
+                            <div tabIndex={0} role="button">Hover</div>
+                            <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                                <li><Link href={"/masters/uploadMaster"}>Upload Master</Link></li>
+
+                            </ul>
+                        </div></li>}
                     {status === "authenticated" && <li><Link href={"/imagelist"}>Images</Link></li>}
                     {status === "authenticated" && <li><Link href={"/video"}>Video</Link></li>}
                     {status === "authenticated" && <li>
@@ -62,10 +76,17 @@ function Navbar(props: Props) {
                         <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
                             {/* Sidebar content here */}
                             {status === "authenticated" && <li><Link href={"/home"}><IconContainer classname={IconStyle.sideBarIcon} element={FiHome} />Home</Link></li>}
-                            {status === "authenticated" && admin && <li><Link href={"/home/user"}><IconContainer classname={IconStyle.sideBarIcon} element={FiHome} />User</Link></li>}
-                            {status === "authenticated" && admin && <li><Link href={"/upload"}><IconContainer classname={IconStyle.sideBarIcon} element={FiHome} />Upload</Link></li>}
-                            {status === "authenticated" && <li><Link href={"/imagelist"}><IconContainer classname={IconStyle.sideBarIcon} element={FiHome} />Images</Link></li>}
-                            {status === "authenticated" && <li><Link href={"/video"}><IconContainer classname={IconStyle.sideBarIcon} element={FiHome} />Video</Link></li>}
+                            {status === "authenticated" && admin && <li><Link href={"/home/user"}><IconContainer classname={IconStyle.sideBarIcon} element={FaRegCircleUser} />User</Link></li>}
+                            {status === "authenticated" && admin && <li><Link href={"/upload"}><IconContainer classname={IconStyle.sideBarIcon} element={TbWorldUpload} />Upload</Link></li>}
+                            {status === "authenticated" && admin && <li> <details open>
+                                <summary><IconContainer classname={IconStyle.sideBarIcon} element={RiContactsBookUploadFill} />Master</summary>
+                                <ul>
+                                    <li><Link href={"/masters/uploadMaster"}><IconContainer classname={IconStyle.sideBarSubIcon} element={ImUpload} />Upload Master</Link></li>
+                                </ul>
+                            </details></li>}
+
+                            {status === "authenticated" && <li><Link href={"/imagelist"}><IconContainer classname={IconStyle.sideBarIcon} element={FaRegImage} />Images</Link></li>}
+                            {status === "authenticated" && <li><Link href={"/video"}><IconContainer classname={IconStyle.sideBarIcon} element={MdOndemandVideo} />Video</Link></li>}
                         </ul>
                     </div>
                 </div>
