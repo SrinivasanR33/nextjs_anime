@@ -1,13 +1,15 @@
 
-export default function Home() {
+// pages/index.tsx
+import React from 'react';
+import FlipBox from './component/PageComponents/rootpage/RootPageHeaderBox';
+
+
+const Home: React.FC = () => {
   return (
-    <div>
-      <div className="grid grid-cols-4 h-screen">
-        {/* Initial 4 boxes */}
-        {[1, 2, 3, 4].map((index) => (
-          <div key={index} className="">HTML</div>
-        ))}
-      </div>
+    <div className="">
+      <FlipBox content={""} />
     </div>
   );
-}
+};
+
+export default Home;

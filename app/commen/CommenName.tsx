@@ -45,6 +45,7 @@ export const statusCode = {
     notAcceptable: 406
 }
 export const IconStyle = {
-    sideBarIcon: "text-xl p-2.5 bg-primary rounded-full",
+    sideBarIcon: "text-xl text-success p-2.5 bg-base-300 rounded-full",
+    sideBarSubIcon: "text-xl p-2 text-success bg-base-300 rounded-full",
     navbarIcon: "text-3xl p-2"
 };
