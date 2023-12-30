@@ -9,7 +9,7 @@ import { store } from '@/redux/store/store'
 import MyImage from './ImageComponent/CustomImage'
 import ImageDetail from './ImageComponent/Fullpagepriview'
 import { FiHome } from 'react-icons/fi'
-import { IconStyle } from '../commen/CommenName'
+import { IconStyle, Linkpage } from '../commen/CommenName'
 import { TbWorldUpload } from "react-icons/tb";
 import { RiContactsBookUploadFill } from "react-icons/ri";
 import { ImUpload } from "react-icons/im";
@@ -18,6 +18,7 @@ import { MdOndemandVideo } from "react-icons/md";
 // import SignOutPage from './Logout'
 import LogoutButton from './Logout'
 import { FaRegCircleUser } from 'react-icons/fa6'
+import { link } from 'fs'
 // import SwitchTheme from './theme/Theme'
 interface Props {
     page: String,
@@ -35,19 +36,19 @@ function Navbar(props: Props) {
             </div>
             <div className="navbar-center hidden lg:flex md:flex sm:flex">
                 <ul className="menu menu-horizontal ">
-                    {status === "authenticated" && <li ><Link href={"/home"}>Home</Link></li>}
-                    {status === "authenticated" && admin && <li><Link href={"/home/user"}>User</Link></li>}
-                    {status === "authenticated" && admin && <li><Link href={"/upload"}>Upload</Link></li>}
+                    {status === "authenticated" && <li ><Link href={Linkpage.home.link}>{Linkpage.home.label}</Link></li>}
+                    {status === "authenticated" && admin && <li><Link href={Linkpage.users.link}>{Linkpage.users.label}</Link></li>}
+                    {status === "authenticated" && admin && <li><Link href={Linkpage.upload.link}>{Linkpage.upload.label}</Link></li>}
                     {status === "authenticated" && admin && <li>
                         <div className="dropdown dropdown-hover dropdown-bottom">
-                            <div tabIndex={0} role="button">Hover</div>
+                            <div tabIndex={0} role="button">Masters</div>
                             <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                                <li><Link href={"/masters/uploadMaster"}>Upload Master</Link></li>
+                                <li><Link href={Linkpage.uploadMaster.link}>{Linkpage.uploadMaster.label}</Link></li>
 
                             </ul>
                         </div></li>}
-                    {status === "authenticated" && <li><Link href={"/imagelist"}>Images</Link></li>}
-                    {status === "authenticated" && <li><Link href={"/video"}>Video</Link></li>}
+                    {status === "authenticated" && <li><Link href={Linkpage.image.link}>{Linkpage.image.label}</Link></li>}
+                    {status === "authenticated" && <li><Link href={Linkpage.video.link}>{Linkpage.video.label}</Link></li>}
                     {status === "authenticated" && <li>
                         <Link href={""}>
                             <LogoutButton />
@@ -60,10 +61,12 @@ function Navbar(props: Props) {
                             </div>
                         </div>}
                     <SwitchTheme />
-                    {status === "unauthenticated" && <li><Link href={"/api/auth/signin"}><button className='btn  btn-accent btn-xs'>Login</button> </Link></li>}
+                    {status === "unauthenticated" && <li><Link href={Linkpage.login.link}><button className='btn  btn-accent btn-xs'>{Linkpage.login.label}</button> </Link></li>}
                 </ul>
             </div>
             <div className='md:hidden sm:hidden xs:flex'>
+                {/* {status === "unauthenticated" && <li><Link href={Linkpage.login.link}><button className='btn  btn-accent btn-xs'>{Linkpage.login.label}</button> </Link></li>}
+                {status === "authenticated" && <LogoutButton />} */}
                 <SwitchTheme />
                 <div className="drawer drawer-end">
                     <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
@@ -75,18 +78,17 @@ function Navbar(props: Props) {
                         <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
                         <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
                             {/* Sidebar content here */}
-                            {status === "authenticated" && <li><Link href={"/home"}><IconContainer classname={IconStyle.sideBarIcon} element={FiHome} />Home</Link></li>}
-                            {status === "authenticated" && admin && <li><Link href={"/home/user"}><IconContainer classname={IconStyle.sideBarIcon} element={FaRegCircleUser} />User</Link></li>}
-                            {status === "authenticated" && admin && <li><Link href={"/upload"}><IconContainer classname={IconStyle.sideBarIcon} element={TbWorldUpload} />Upload</Link></li>}
+                            {status === "authenticated" && <li><Link href={Linkpage.home.link}><IconContainer classname={IconStyle.sideBarIcon} element={FiHome} />{Linkpage.home.label}</Link></li>}
+                            {status === "authenticated" && admin && <li><Link href={Linkpage.users.link}><IconContainer classname={IconStyle.sideBarIcon} element={FaRegCircleUser} />{Linkpage.users.label}</Link></li>}
+                            {status === "authenticated" && admin && <li><Link href={Linkpage.upload.link}><IconContainer classname={IconStyle.sideBarIcon} element={TbWorldUpload} />{Linkpage.upload.label}</Link></li>}
                             {status === "authenticated" && admin && <li> <details open>
                                 <summary><IconContainer classname={IconStyle.sideBarIcon} element={RiContactsBookUploadFill} />Master</summary>
                                 <ul>
-                                    <li><Link href={"/masters/uploadMaster"}><IconContainer classname={IconStyle.sideBarSubIcon} element={ImUpload} />Upload Master</Link></li>
+                                    <li><Link href={Linkpage.uploadMaster.link}><IconContainer classname={IconStyle.sideBarSubIcon} element={ImUpload} />{Linkpage.uploadMaster.label}</Link></li>
                                 </ul>
                             </details></li>}
-
-                            {status === "authenticated" && <li><Link href={"/imagelist"}><IconContainer classname={IconStyle.sideBarIcon} element={FaRegImage} />Images</Link></li>}
-                            {status === "authenticated" && <li><Link href={"/video"}><IconContainer classname={IconStyle.sideBarIcon} element={MdOndemandVideo} />Video</Link></li>}
+                            {status === "authenticated" && <li><Link href={Linkpage.image.link}><IconContainer classname={IconStyle.sideBarIcon} element={FaRegImage} />{Linkpage.image.label}</Link></li>}
+                            {status === "authenticated" && <li><Link href={Linkpage.video.link}><IconContainer classname={IconStyle.sideBarIcon} element={MdOndemandVideo} />{Linkpage.video.label}</Link></li>}
                         </ul>
                     </div>
                 </div>

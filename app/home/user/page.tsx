@@ -5,7 +5,7 @@ import React from 'react'
 
 const User = () => {
     return (
-        <div>
+        <div className='min-h-full overflow-auto'>
             <div className='grid lg:grid-cols-1 sm:grid-cols-1 gap-2 pt-4'>
                 <div className='p-3'><UserForm /></div>
                 <div className='grid lg:grid-cols-2 sm:grid-cols-1 xs:grid-cols-0.5 gap-2 '>

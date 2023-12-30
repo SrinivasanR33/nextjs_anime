@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { LoginUserList } from './LoginUserService'
 import { UserLoginData } from '@/utils/types'
 import { tableName1 } from '../commen/CommenName'
+import Table, { Column } from '../component/datagridComponent/DataGrid'
 
 function LoginUser() {
     const [loggedUsers, setLoggedUsers] = useState([])
@@ -13,11 +14,30 @@ function LoginUser() {
     useEffect(() => {
         ListApi()
     }, [])
-
+    const col: Column<UserLoginData>[] = [
+        {
+            Header: "Name", accessor: 'name', isAction: true, action: (row: UserLoginData) => (
+                <div className="flex items-center gap-3">
+                    <div className="avatar">
+                        <div className="mask mask-squircle rounded-full w-12 h-12">
+                            <img src={row.image} alt="Avatar Tailwind CSS Component" />
+                        </div>
+                    </div>
+                    <div>
+                        <div className="font-bold">{row.name}</div>
+                    </div>
+                </div>
+            )
+        },
+        {
+            Header: "Email", accessor: "email",
+        },
+    ]
     return (
         <div>
             <div className='text-center font-bold'>{tableName1}</div>
-            <div className=" h-2/3 overflow-auto">
+            <Table columns={col} data={loggedUsers} />
+            {/* <div className=" h-2/3 overflow-auto">
                 <table className="table">
                     <thead>
                         <tr>
@@ -42,7 +62,6 @@ function LoginUser() {
                                         </div>
                                         <div>
                                             <div className="font-bold">{val.name}</div>
-                                            <div className="text-sm opacity-50">United States</div>
                                         </div>
                                     </div>
                                 </td>
@@ -54,7 +73,7 @@ function LoginUser() {
                     </tbody>
 
                 </table>
-            </div>
+            </div> */}
         </div>
     )
 }
