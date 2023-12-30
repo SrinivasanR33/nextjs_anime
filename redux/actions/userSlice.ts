@@ -10,7 +10,7 @@ type UserState = {
 const initialState: UserState = {
   userList: [],
   userData: {
-    id: "", // Provide default values or handle them as needed
+    _id: "", // Provide default values or handle them as needed
     name: "",
     email: "",
     number: "",

@@ -9,12 +9,13 @@ import React from 'react'
 import { FiDelete, FiEdit } from 'react-icons/fi'
 import Image from 'next/image'
 import { tableName2 } from '@/app/commen/CommenName'
+import Table, { Column } from '../datagridComponent/DataGrid'
 
 
 
 function Usertable() {
     const dispatch = useAppDispatch()
-    const userList = useAppSelector((state) => state.userReducer.userList);
+    const userList: UserL[] = useAppSelector((state) => state.userReducer.userList);
     const { emploeeLoading } = useAppSelector((state) => state.masterReducer);
     console.log(userList, "userList")
     const apicall = async () => {
@@ -25,11 +26,44 @@ function Usertable() {
         await DeleteUserAPI(id)
         await apicall()
     }
-
+    const col: Column<UserL>[] = [
+        {
+            Header: "Name", accessor: 'name', isAction: true, action: (row: UserL) => (
+                <div className="flex items-center gap-3">
+                    <div className="avatar">
+                        <div className="mask mask-squircle rounded-full w-12 h-12">
+                            <Image src={adminimage} className='w-8' alt="Avatar Tailwind CSS Component" />
+                        </div>
+                    </div>
+                    <div>
+                        <div className="font-bold">{row.name}</div>
+                    </div>
+                </div>
+            )
+        },
+        {
+            Header: "Email", accessor: "email"
+        },
+        {
+            Header: "Number", accessor: "number"
+        },
+        {
+            Header: 'Actions',
+            accessor: 'number',
+            isAction: true,
+            action: (row: UserL) => (
+                <div className='flex gap-4'>
+                    <div className='text-blue-500 hover:cursor-pointer' onClick={() => dispatch(editUser(row))}><FiEdit /></div>
+                    <div className='text-red-500 hover:cursor-pointer' onClick={() => handeldelete(row._id)}><FiDelete /></div>
+                </div>
+            ),
+        },
+    ]
     return (
         <div >
             <div className='text-center font-bold'>{tableName2}</div>
-            {emploeeLoading ?
+            <Table columns={col} data={userList} loading={emploeeLoading as boolean} />
+            {/* {emploeeLoading ?
                 <div role="status" className="w-full animate-pulse">
                     <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 w-full mb-2.5"></div>
                     <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px] mb-2.5"></div>
@@ -65,7 +99,6 @@ function Usertable() {
                                             </div>
                                             <div>
                                                 <div className="font-bold">{val.name}</div>
-                                                {/* <div className="text-sm opacity-50">United States</div> */}
                                             </div>
                                         </div>
                                     </td>
@@ -79,7 +112,7 @@ function Usertable() {
                             ))}
                         </tbody>
                     </table>
-                </div>}
+                </div>} */}
         </div>
     )
 }

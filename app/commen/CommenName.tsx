@@ -71,3 +71,13 @@ export const landingpageImageList2: homeImageList[] = [
     { id: 9, image: loacalImage.demon.demon2 },
     { id: 10, image: loacalImage.demon.demon2 },
 ]
+
+export const Linkpage = {
+    home: { link: "/home", label: 'Home' },
+    image: { link: '/imagelist', label: 'Images' },
+    video: { link: '/video', label: "Video" },
+    uploadMaster: { link: '/masters/uploadMasters', label: "Upload Masters" },
+    users: { link: '/home/user', label: "User" },
+    upload: { link: '/upload', label: "Upload" },
+    login: { link: '/api/auth/signin', label: "Login" },
+}
