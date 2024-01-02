@@ -1,47 +1,56 @@
 .container {
-    display: flex;
-    height: 100vh;
-    /* overflow: hidden; */
+  display: flex;
+  height: 100vh;
+  /* overflow: hidden; */
 }
 
 .hidecontainer {
-    height: 100vh;
-    /* overflow: hidden; */
+  height: 100vh;
+  /* overflow: hidden; */
 }
 
 .top {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    height: 70%;
-    transition: height 1s;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 70%;
+  transition: height 1s;
 }
 
 .bottom {
-    display: flex;
-    flex: 1;
-    height: 70%;
-    /* padding-right: 60px; */
-    transition: height 1s;
+  display: flex;
+  flex: 1;
+  height: 75%;
+  /* padding-right: 60px; */
+  transition: height 1s;
 }
 
 .box {
-    flex: 1;
-    border: 1px solid #000;
-    margin: 8px;
+  flex: 1;
+  border: 1px solid #000;
+  margin: 8px;
+}
+.box1 {
+  height: 50%;
+  border: 1px solid #000;
+  margin: 8px;
 }
 
+.inerbox {
+  height: 100%;
+  width: 100%;
+}
 /* Separate class for hiding the top */
 .hideTop {
-    height: 0;
-    visibility: hidden;
-    transition: height 1s;
+  height: 0;
+  visibility: hidden;
+  transition: height 1s;
 }
 
 /* Separate class for showing the bottom */
 .showBottom {
-    flex: 1;
-    height: 70%;
-    transition: height 1s;
-    /* width: 100%; */
+  flex: 1;
+  height: 70%;
+  transition: height 1s;
+  /* width: 100%; */
 }
