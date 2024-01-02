@@ -1,6 +1,8 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 import styles from './styles.module.css';
+import Image from 'next/image';
+import { loacalImage } from '../commen/CommenName';
 
 const HomePage = () => {
     const [showTopBoxes, setShowTopBoxes] = useState(true);
@@ -22,8 +24,18 @@ const HomePage = () => {
             <div className={`${showTopBoxes ? styles.top : styles.hideTop}`}
             //  style={{ ...(!showTopBoxes && { display: 'none' }) }}
             >
-                <div className={styles.box}>Box 1</div>
-                <div className={styles.box}>Box 2</div>
+                <div className={styles.box1}>
+                    <div className={styles.inerbox}>
+
+                        <Image src={loacalImage.homePage.homeimage2} style={{ height: '100%' }} alt='' />
+                    </div>
+                </div>
+                <div className={styles.box1}>
+                    <div className={styles.inerbox}>
+
+                        <Image src={loacalImage.homePage.homeimage1} style={{ height: '100%' }} alt='' />
+                    </div>
+                </div>
             </div>
             {/* Bottom 50% */}
             <div className={`${styles.bottom} ${showTopBoxes ? "" : styles.showBottom}`}>

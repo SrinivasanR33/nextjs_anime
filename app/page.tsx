@@ -7,7 +7,7 @@ import FlipBox from './component/PageComponents/rootpage/RootPageHeaderBox';
 const Home: React.FC = () => {
   return (
     <div className="">
-      {/* <FlipBox content={""} /> */}
+      <FlipBox content={""} />
     </div>
   );
 };

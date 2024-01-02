@@ -55,21 +55,37 @@ export const loacalImage = {
     demon: {
         demon1: require("../../public/onepiece/onepeice.jpg"),
         demon2: require("../../public/demon/demon2.jpg")
+    },
+    landingPageImage:{
+        entryPageImage1: require("../../public/Anime/one pieace/op1.jpg"),
+        entryPageImage2: require("../../public/Anime/Bleach/bleach2.jpg"),
+        entryPageImage3: require("../../public/Anime/Dragen ball/drgonball1.jpg"),
+        entryPageImage4: require("../../public/Anime/Naruto/naruto1.jpg"),
+        entryPageImage5: require("../../public/Anime/Demon/demon2.jpg"),
+        entryPageImage6: require("../../public/Anime/ATT/att1.jpg"),
+        entryPageImage7: require("../../public/Anime/black clover/blackclover2.jpg"),
+        entryPageImage8: require("../../public/Anime/is it wrong to pick up dungeon/danmachi2.jpg"),
+        entryPageImage9: require("../../public/Anime/jujutsu kaisen/jk1.jpg"),
+        entryPageImage10: require("../../public/Anime/that time i got reincarnated as a slime/slime2.jpg"),
+    },
+    homePage:{
+        homeimage1: require("../../public/Anime/homeimage/home1.jpg"),
+        homeimage2: require("../../public/Anime/homeimage/home2.jpg"),
     }
 }
 export const landingpageImageList: homeImageList[] = [
-    { id: 1, image: loacalImage.demon.demon1 },
-    { id: 2, image: loacalImage.demon.demon2 },
-    { id: 3, image: loacalImage.demon.demon2 },
-    { id: 4, image: loacalImage.demon.demon2 },
-    { id: 5, image: loacalImage.demon.demon2 },
+    { id: 1, image: loacalImage.landingPageImage.entryPageImage1 },
+    { id: 2, image: loacalImage.landingPageImage.entryPageImage2 },
+    { id: 3, image: loacalImage.landingPageImage.entryPageImage3 },
+    { id: 4, image: loacalImage.landingPageImage.entryPageImage4 },
+    { id: 5, image: loacalImage.landingPageImage.entryPageImage5 },
 ]
 export const landingpageImageList2: homeImageList[] = [
-    { id: 7, image: loacalImage.demon.demon2 },
-    { id: 8, image: loacalImage.demon.demon2 },
-    { id: 6, image: loacalImage.demon.demon1 },
-    { id: 9, image: loacalImage.demon.demon2 },
-    { id: 10, image: loacalImage.demon.demon2 },
+    { id: 7, image: loacalImage.landingPageImage.entryPageImage6  },
+    { id: 8, image: loacalImage.landingPageImage.entryPageImage7  },
+    { id: 6, image: loacalImage.landingPageImage.entryPageImage8  },
+    { id: 9, image: loacalImage.landingPageImage.entryPageImage9  },
+    { id: 10, image: loacalImage.landingPageImage.entryPageImage10  },
 ]
 
 export const Linkpage = {
