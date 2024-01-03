@@ -21,8 +21,9 @@ export interface UploadIamgeList {
   uploadImagInfo: object;
 }
 export interface UploadMasterType {
+  _id?: string;
   name: string;
   codeName: string;
   uploadId: string;
-  isActive: string;
+  isActive: boolean;
 }
