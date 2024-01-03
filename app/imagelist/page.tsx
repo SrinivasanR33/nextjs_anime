@@ -28,7 +28,7 @@ function ImageList() {
     })
     const dispatch = useAppDispatch()
     const listInnerRef = useRef(null)
-    const { emploeeLoading } = useAppSelector((state) => state.masterReducer)
+    const { tableLoading } = useAppSelector((state) => state.masterReducer)
     const [fullscreenImage, setFullscreenImage] = useState<string | null>(null);
     const handelFilter = async (e: React.ChangeEvent<HTMLSelectElement>) => {
         try {
@@ -121,7 +121,7 @@ function ImageList() {
                         </div>
                     </div>
                     <div ref={listInnerRef} onScroll={onScroll} className='grid lg:grid-cols-6 md:grid-cols-8 sm:grid-cols-10 xs:grid-cols-12 gap-3 overflow-y-auto' style={{ maxHeight: '750px' }}>
-                        {emploeeLoading ?
+                        {tableLoading ?
                             <ImageLoading num={24} />
                             :
                             <>
