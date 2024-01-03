@@ -27,13 +27,13 @@ const HomePage = () => {
                 <div className={styles.box1}>
                     <div className={styles.inerbox}>
 
-                        <Image src={loacalImage.homePage.homeimage2} style={{ height: '100%' }} alt='' />
+                        {/* <Image src={loacalImage.homePage.homeimage2} style={{ height: '100%' }} alt='' /> */}
                     </div>
                 </div>
                 <div className={styles.box1}>
                     <div className={styles.inerbox}>
 
-                        <Image src={loacalImage.homePage.homeimage1} style={{ height: '100%' }} alt='' />
+                        {/* <Image src={loacalImage.homePage.homeimage1} style={{ height: '100%' }} alt='' /> */}
                     </div>
                 </div>
             </div>

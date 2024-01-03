@@ -16,7 +16,7 @@ import Table, { Column } from '../datagridComponent/DataGrid'
 function Usertable() {
     const dispatch = useAppDispatch()
     const userList: UserL[] = useAppSelector((state) => state.userReducer.userList);
-    const { emploeeLoading } = useAppSelector((state) => state.masterReducer);
+    const { tableLoading } = useAppSelector((state) => state.masterReducer);
     console.log(userList, "userList")
     const apicall = async () => {
         await getUserAPI()
@@ -62,7 +62,7 @@ function Usertable() {
     return (
         <div >
             <div className='text-center font-bold'>{tableName2}</div>
-            <Table columns={col} data={userList} loading={emploeeLoading as boolean} />
+            <Table columns={col} data={userList} loading={tableLoading as boolean} />
             {/* {emploeeLoading ?
                 <div role="status" className="w-full animate-pulse">
                     <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 w-full mb-2.5"></div>

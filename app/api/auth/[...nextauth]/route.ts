@@ -1,4 +1,3 @@
-import { UserCredentialsConfig } from "./../../../commen/CommenTypeDefination";
 import clientPromise from "@/mongoDb/MongoDB";
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import CredentialsProvider from "next-auth/providers/credentials";
@@ -9,9 +8,6 @@ import * as bcrypt from "bcryptjs";
 import type { Adapter } from "next-auth/adapters";
 import { AdminState } from "@/redux/actions/userSlice";
 import { store } from "@/redux/store/store";
-import { NextResponse } from "next/server";
-import { METHODS } from "http";
-import { URL } from "@/app/commen/CommenName";
 
 interface CustomRequestInternal extends RequestInternal {
   session: {
@@ -19,7 +15,7 @@ interface CustomRequestInternal extends RequestInternal {
   };
 }
 
-export const authOption: NextAuthOptions = {
+const authOption: NextAuthOptions = {
   adapter: MongoDBAdapter(clientPromise) as Adapter,
   providers: [
     GoogleProvider({

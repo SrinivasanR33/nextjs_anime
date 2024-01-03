@@ -6,7 +6,7 @@ interface UserFormInputProps extends InputHTMLAttributes<HTMLInputElement> {
     value: string | undefined;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     type: string;
-    placeholder: string;
+    placeholder?: string;
 }
 
 const UserFormInput: React.FC<UserFormInputProps> = ({
