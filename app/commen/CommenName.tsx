@@ -76,8 +76,8 @@ export const loacalImage = {
         entryPageImage10: require("../../public/Anime/that time i got reincarnated as a slime/slime2.jpg"),
     },
     homePage: {
-        homeimage1: require("../../public/Anime/homeimage/home1.jpg"),
-        homeimage2: require("../../public/Anime/homeimage/home2.jpg"),
+        homeimage1: require("../../public/Anime/homeimage/home2.jpg"),
+        homeimage2: require("../../public/Anime/homeimage/homepage3.jpg"),
     }
 }
 export const landingpageImageList: homeImageList[] = [
