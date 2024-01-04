@@ -1,4 +1,5 @@
 import React from 'react'
+import { Linkpage } from '../commen/CommenName'
 
 function Footer() {
     return (
@@ -13,15 +14,15 @@ function Footer() {
             <nav>
                 <header className="footer-title">Company</header>
                 <a className="link link-hover">About us</a>
-                <a className="link link-hover">Contact</a>
+
                 <a className="link link-hover">Jobs</a>
                 <a className="link link-hover">Press kit</a>
             </nav>
             <nav>
                 <header className="footer-title">Legal</header>
                 <a className="link link-hover">Terms of use</a>
-                <a className="link link-hover">Privacy policy</a>
-                <a className="link link-hover">Cookie policy</a>
+                <a className="link link-hover" href={Linkpage.Privacy.link}>{Linkpage.Privacy.label}</a>
+                {/* <a className="link link-hover">Cookie policy</a> */}
             </nav>
         </footer>
     )
