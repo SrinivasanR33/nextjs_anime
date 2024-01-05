@@ -16,7 +16,7 @@
     flex: 1;
     height: 70%;
     transform-style: preserve-3d;
-    transition: transform 1s ease;
+    transition: transform 2s ease;
     /* Adjust the transition duration and easing function */
     transform-origin: center;
 }

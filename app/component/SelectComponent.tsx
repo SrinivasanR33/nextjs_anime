@@ -14,8 +14,9 @@ const SelectField: React.FC<SelectFieldProps> = ({ label, options, ...selectProp
 
     return (
         <div>
-            <label>{label}</label>
-            <select {...selectProps} value={value} >
+            {/* <label>{label}</label> */}
+            <select className="select select-accent w-full max-w-xs"{...selectProps} value={value} >
+                <option value={""}>Select</option>
                 {options.map((option) => (
                     <option key={option.value} value={option.value}>
                         {option.label}

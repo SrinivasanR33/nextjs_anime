@@ -1,16 +1,18 @@
 "use client"
 import React, { useEffect, useRef, useState } from 'react'
-import { UploadArrayType } from '../commen/CommenName'
+import { UploadArrayType, selectArr } from '../commen/CommenName'
 import { UploadImageList } from './imageListService'
 import CloudinaryImage from '../component/ImageComponent/CloudinaryImage'
 import DownloadButton from '../component/DownloadButton'
 import DownloadImage from '../component/DownloadButton'
 import { UploadIamgeList } from '@/utils/types'
 import MyImage from '../component/ImageComponent/CustomImage'
-import { payloadPaginationData } from '../commen/CommenTypeDefination'
+import { SelecfieldArr, payloadPaginationData } from '../commen/CommenTypeDefination'
 import { useAppDispatch, useAppSelector } from '@/redux/hook/hook'
 import { setFullScreenState, setLoadingState } from '@/redux/actions/masterSlice'
 import { ImageLoading } from '../commen/LoadingComponets'
+import { CreateUploadMasterAPI } from '../masters/uploadMasters/UploadMasterService'
+import SelectField from '../component/SelectComponent'
 
 
 interface pageInfo {
@@ -30,6 +32,7 @@ function ImageList() {
     const listInnerRef = useRef(null)
     const { tableLoading } = useAppSelector((state) => state.masterReducer)
     const [fullscreenImage, setFullscreenImage] = useState<string | null>(null);
+    const [masterList, setMasterList] = useState<SelecfieldArr[]>([])
     const handelFilter = async (e: React.ChangeEvent<HTMLSelectElement>) => {
         try {
             dispatch(setLoadingState(true))
@@ -104,6 +107,19 @@ function ImageList() {
             }
         }
     };
+    const handelGetAPI = async () => {
+        const res = await CreateUploadMasterAPI()
+        if (res) {
+            const master = res?.data
+            const selectValue = selectArr({ arr: master, valueKey: "codeName", labelKey: "name" })
+            setMasterList(selectValue)
+        } else {
+            setMasterList([])
+        }
+    }
+    useEffect(() => {
+        handelGetAPI()
+    }, [])
     return (
         <>
             {!fullscreenImage ? <>
@@ -111,13 +127,14 @@ function ImageList() {
                     <div className='flex gap-7 p-2'>
                         {/* {folderNameandId} */}
                         <div>
-                            <select className="select select-accent w-full max-w-xs" onChange={handelFilter}>
+                            <SelectField options={masterList} label='name' onChange={handelFilter} />
+                            {/* <select className="select select-accent w-full max-w-xs" onChange={handelFilter}>
                                 <option value={""}>Select Folder name</option>
                                 {arr.map((val, i) => (
                                     <option key={i} value={val.name}>{val.name}</option>
                                 ))}
 
-                            </select>
+                            </select> */}
                         </div>
                     </div>
                     <div ref={listInnerRef} onScroll={onScroll} className='grid lg:grid-cols-6 md:grid-cols-8 sm:grid-cols-10 xs:grid-cols-12 gap-3 overflow-y-auto' style={{ maxHeight: '750px' }}>

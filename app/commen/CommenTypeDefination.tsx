@@ -74,3 +74,17 @@ export interface homeImageList {
 export interface UploadMasters {
 
 }
+
+// Select field 
+export interface SelectArrProps {
+    arr: any;
+    valueKey: string;
+    labelKey: string;
+    dynamicFields?: object;
+}
+export interface SelecfieldArr {
+    value: string,
+    label: string,
+    [key: string]: any;
+    allValue: any
+}

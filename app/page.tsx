@@ -8,7 +8,7 @@ import Footer from './component/Footer';
 const Home: React.FC = () => {
   return (
     <div className="min-h-screen">
-      {/* <FlipBox content={""} /> */}
+      <FlipBox content={""} />
       <div className='absolute bottom-0 w-full'>
         <Footer />
       </div>
