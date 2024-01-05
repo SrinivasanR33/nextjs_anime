@@ -1,17 +1,20 @@
 "use client"
-import React, { useState } from 'react'
-import { UploadArrayType } from '../commen/CommenName'
+import React, { useEffect, useState } from 'react'
+import { UploadArrayType, selectArr } from '../commen/CommenName'
 import { setLoadingState } from '@/redux/actions/masterSlice'
-import { videopayload } from '../commen/CommenTypeDefination'
+import { SelecfieldArr, videopayload } from '../commen/CommenTypeDefination'
 import { useAppDispatch } from '@/redux/hook/hook'
 import { UploadIamgeList } from '@/utils/types'
 import { UploadVideoList } from './Videoservice'
 import VideoPlayer from '../component/videoComponent/VideoComponent'
 import DownloadImage from '../component/DownloadButton'
+import { CreateUploadMasterAPI } from '../masters/uploadMasters/UploadMasterService'
+import SelectField from '../component/SelectComponent'
 
 function Video() {
     const arr = UploadArrayType
     const dispatch = useAppDispatch()
+    const [masterList, setMasterList] = useState<SelecfieldArr[]>([])
     const [videoList, setVideoList] = useState<UploadIamgeList[] | []>([])
     const handelFilter = async (e: React.ChangeEvent<HTMLSelectElement>) => {
         try {
@@ -27,18 +30,32 @@ function Video() {
 
         }
     }
+    const handelGetAPI = async () => {
+        const res = await CreateUploadMasterAPI()
+        if (res) {
+            const master = res?.data
+            const selectValue = selectArr({ arr: master, valueKey: "codeName", labelKey: "name" })
+            setMasterList(selectValue)
+        } else {
+            setMasterList([])
+        }
+    }
+    useEffect(() => {
+        handelGetAPI()
+    }, [])
     return (
         <div>
             <div className='flex gap-7 p-2'>
                 {/* {folderNameandId} */}
                 <div>
-                    <select className="select select-accent w-full max-w-xs" onChange={handelFilter}>
+                    <SelectField options={masterList} label='name' onChange={handelFilter} />
+                    {/* <select className="select select-accent w-full max-w-xs" onChange={handelFilter}>
                         <option value={""}>Select Folder name</option>
                         {arr.map((val, i) => (
                             <option key={i} value={val.name}>{val.name}</option>
                         ))}
 
-                    </select>
+                    </select> */}
                 </div>
             </div>
             <div>

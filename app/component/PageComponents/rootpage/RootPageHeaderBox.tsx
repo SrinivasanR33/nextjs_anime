@@ -3,8 +3,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from './styles.module.css';
 import Image from 'next/image';
-import demon from "../../../../public/demon/demon1.jpg"
-import demon1 from "../../../../public/demon/demon2.jpg"
 import { homeImageList } from '@/app/commen/CommenTypeDefination';
 import { landingpageImageList, landingpageImageList2 } from '@/app/commen/CommenName';
 interface FlipBoxProps {
@@ -33,7 +31,7 @@ const FlipBox: React.FC<FlipBoxProps> = ({ content }) => {
                 {boxes.map((box: homeImageList, i) => (
                     <div className={styles.box} key={i}>
                         {/* <Image src={demon} layout='fill' objectFit='covers' alt=''/>S */}
-                        <Image src={box.image} style={{height:"100%",width:"100%"}} alt='' />
+                        <Image src={""} style={{ height: "100%", width: "100%" }} alt={`${box.id}`} />
                     </div>
                 ))}
             </div>

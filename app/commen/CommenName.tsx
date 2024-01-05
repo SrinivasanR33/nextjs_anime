@@ -1,4 +1,4 @@
-import { homeImageList } from "./CommenTypeDefination"
+import { SelecfieldArr, SelectArrProps, homeImageList } from "./CommenTypeDefination"
 
 export const companyName = "RS & Software"
 export const tableName1 = "Logged Users List"
@@ -17,8 +17,8 @@ export const uploadMasterFormName = {
     uploadId: 'Upload ID'
 
 }
-// export const URL = "http://localhost:4000/api"
-export const URL = "https://nextjs-anime-kappa.vercel.app/api"
+export const URL = "http://localhost:4000/api"
+// export const URL = "https://nextjs-anime-kappa.vercel.app/api"
 export const DEFAULT_FOLDER_NAME = "uzwj6aq9"
 export const CLOUD_NAME = "ddaygokti"
 export const UploadArrayType = [
@@ -79,6 +79,10 @@ export const loacalImage = {
     homePage: {
         homeimage1: require("../../public/Anime/homeimage/home2.jpg"),
         homeimage2: require("../../public/Anime/homeimage/homepage3.jpg"),
+    },
+    footer: {
+        footerImage1: require("../../public/footer/footer1.png"),
+        footerImage2: require("../../public/footer/footer2.png")
     }
 }
 export const landingpageImageList: homeImageList[] = [
@@ -106,3 +110,13 @@ export const Linkpage = {
     login: { link: '/api/auth/signin', label: "Login" },
     Privacy: { link: '/Privacy/Policy', label: "Privacy Policy" },
 }
+export const selectArr = ({ arr, valueKey, labelKey }: SelectArrProps) => {
+    const res = arr.map((val: SelecfieldArr) => ({
+        value: val[valueKey],
+        label: val[labelKey],
+        allValue: val
+    }));
+
+    return res;
+};
+
