@@ -74,7 +74,7 @@ function Navbar(props: Props) {
                         {/* Page content here */}
                         <label htmlFor="my-drawer-4" className="drawer-button"><IconContainer classname={IconStyle.navbarIcon} element={FiHome} /></label>
                     </div>
-                    <div className="drawer-side mt-16">
+                    <div className="drawer-side mt-16" style={{ zIndex: 200 }}>
                         <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
                         <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
                             {/* Sidebar content here */}
