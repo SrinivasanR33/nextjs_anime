@@ -9,7 +9,7 @@ const Home: React.FC = () => {
   return (
     <div className="max-h-screen overflow-auto">
       <FlipBox content={""} />
-      <div className=''>
+      <div className='max-h-screen'>
         <Footer />
       </div>
     </div>
