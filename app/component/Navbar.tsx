@@ -67,6 +67,7 @@ function Navbar(props: Props) {
             <div className='md:hidden sm:hidden xs:flex'>
                 {/* {status === "unauthenticated" && <li><Link href={Linkpage.login.link}><button className='btn  btn-accent btn-xs'>{Linkpage.login.label}</button> </Link></li>}
                 {status === "authenticated" && <LogoutButton />} */}
+                {status === "unauthenticated" && <Link className='p-1' href={Linkpage.login.link}><button className='btn btn-accent btn-xs'>{Linkpage.login.label}</button> </Link>}
                 <SwitchTheme />
                 <div className="drawer drawer-end">
                     <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />

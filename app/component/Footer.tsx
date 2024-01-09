@@ -4,7 +4,7 @@ import { Linkpage, loacalImage } from '../commen/CommenName'
 const Footer = () => {
     return (
         // <LayoutBackground backgroundImage={backgroundImage}>
-        <div>
+        <div className='h-[230px]'>
             {/* <Image src={loacalImage.footer.footerImage1} alt='hi' /> */}
             <footer className="footer p-10 bg-neutral text-neutral-content">
                 {/* <nav>
