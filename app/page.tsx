@@ -7,9 +7,9 @@ import Footer from './component/Footer';
 
 const Home: React.FC = () => {
   return (
-    <div className="min-h-screen overflow-scroll">
+    <div className="max-h-screen overflow-auto">
       <FlipBox content={""} />
-      <div className='absolute bottom-0 w-full'>
+      <div className=''>
         <Footer />
       </div>
     </div>

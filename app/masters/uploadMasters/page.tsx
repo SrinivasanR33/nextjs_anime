@@ -100,7 +100,7 @@ function UploadMasters() {
     }, [])
 
     return (
-        <div className="min-w-full">
+        <div className="min-w-full max-h-screen overflow-auto">
             <div className="grid lg:grid-cols-4 sm:grid-cols-2 md:grid-cols-2 xs:grid-cols-1 gap-6 pl-4">
                 <UserFormInput
                     // className="border-spacing-2"

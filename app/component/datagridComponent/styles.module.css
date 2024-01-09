@@ -30,4 +30,9 @@
   }
 }
 
+.tbodyContain {
+  overflow-y: auto;
+  max-height: 200px;
+}
+
 /* Add any additional styles based on your design requirements */

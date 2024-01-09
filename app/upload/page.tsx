@@ -49,7 +49,7 @@ const UploadPage = () => {
     }, [])
     return (
         <>
-            <div className='flex gap-7 p-2'>
+            <div className='max-h-screen flex justify-center gap-7 p-2'>
                 {/* {folderNameandId} */}
                 <div>
                     <SelectField options={masterList} label='name' onChange={handelselectFunction} />
@@ -61,7 +61,7 @@ const UploadPage = () => {
 
                     </select> */}
                 </div>
-                <div>
+                <div >
                     <UploadType publicId={publicId} setpublicId={setpublicId} folderName={typeObjectValue?.value} uploadFolderId={folderNameandId} />
                 </div>
             </div>

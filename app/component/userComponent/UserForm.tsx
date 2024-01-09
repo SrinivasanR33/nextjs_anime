@@ -105,8 +105,8 @@ const UserForm = () => {
     }
     return (
         <div>
-            <div className='px-4'>
-                <div className='grid  lg:grid-cols-5 sm:grid-cols-2 md:grid-cols-2  gap-2'>
+            <div className='px-2'>
+                <div className='grid  lg:grid-cols-5 sm:grid-cols-2 md:grid-cols-2'>
                     <UserFormInput
                         label={formName.name}
                         value={stateValue.name}
