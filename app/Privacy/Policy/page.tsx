@@ -4,7 +4,7 @@ function Policy() {
     const styleH = "font-bold underline"
     const styleP = "break-words w-1/1"
     return (
-        <div className='min-h-screen min-w-full flex justify-center pt-2'>
+        <div className='max-h-screen min-w-full flex justify-center pt-2'>
             <div className=''>
                 <div>
 
