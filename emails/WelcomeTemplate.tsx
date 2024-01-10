@@ -7,7 +7,7 @@ const WelcomeTemplate = ({ name }: { name: string }) => {
             <Body>
                 <Container>
                     <Text>Hello {name}</Text>
-                    <Link href="http://localhost:4000/home">RS Entertainment</Link>
+                    <Link href="https://nextjs-anime-kappa.vercel.app/api">RS Entertainment</Link>
                 </Container>
             </Body>
         </Html>

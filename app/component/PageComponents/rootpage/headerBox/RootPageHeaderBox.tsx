@@ -31,7 +31,7 @@ const FlipBox: React.FC<FlipBoxProps> = ({ content }) => {
                 {boxes.map((box: homeImageList, i) => (
                     <div className={`${styles.box}`} key={i}>
                         {/* <Image src={demon} layout='fill' objectFit='covers' alt=''/>S */}
-                        <Image src={box.image} style={{ height: "100%", width: "100%" }} alt={`${box.id}`} />
+                        <Image src={""} style={{ height: "100%", width: "100%" }} alt={`${box.id}`} />
                     </div>
                 ))}
             </div>

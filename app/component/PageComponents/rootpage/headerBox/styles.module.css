@@ -7,14 +7,14 @@
 
 .container {
     display: flex;
-    height: 100vh;
+    height: 70vh;
     /* overflow: hidden; */
 }
 
 .box_container {
     display: flex;
     flex: 1;
-    height: 70%;
+    height: 100%;
     transform-style: preserve-3d;
     transition: transform 2s ease;
     /* Adjust the transition duration and easing function */
