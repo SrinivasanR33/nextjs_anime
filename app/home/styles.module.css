@@ -30,6 +30,7 @@
   border: 1px solid #000;
   margin: 8px;
 }
+
 .box1 {
   height: 50%;
   border: 1px solid #000;
@@ -40,6 +41,7 @@
   height: 100%;
   width: 100%;
 }
+
 /* Separate class for hiding the top */
 .hideTop {
   height: 0;

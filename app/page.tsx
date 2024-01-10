@@ -1,15 +1,17 @@
 
 // pages/index.tsx
 import React from 'react';
-import FlipBox from './component/PageComponents/rootpage/RootPageHeaderBox';
 import Footer from './component/Footer';
+import FlipBox from './component/PageComponents/rootpage/headerBox/RootPageHeaderBox';
+import CenterBox from './component/PageComponents/rootpage/centerBox/RootPageCenterBox';
 
 
 const Home: React.FC = () => {
   return (
     <div className="max-h-screen overflow-auto">
       <FlipBox content={""} />
-      <div className='max-h-screen'>
+      <CenterBox />
+      <div>
         <Footer />
       </div>
     </div>

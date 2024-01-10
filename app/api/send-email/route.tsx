@@ -1,31 +1,18 @@
 
 import { NextRequest, NextResponse } from 'next/server';
-import { render } from "@react-email/render";
-import nodemailer from "nodemailer";
-import * as React from "react";
+import { Resend } from "resend"
 import WelcomeTemplate from '@/emails/WelcomeTemplate';
+import { statusCode } from '@/app/commen/CommenName';
 
-export async function POST(req: NextRequest) {
+const resend = new Resend(process.env.RESEND_API_KEY)
 
-    const transporter = nodemailer.createTransport({
-        host: "smtp.forwardemail.net",
-        port: 465,
-        secure: true,
-        auth: {
-            user: "vasan4649@gmai.com",
-            pass: "rs2ssvvmm",
-        },
-    });
-
-    const emailHtml = render(<WelcomeTemplate name="https://example.com" />);
-
-    const options = {
-        from: "rssoftware@gmail.com",
-        to: `adhanamcom1@gmail.com`,
+export async function POST(request: NextRequest) {
+    const body = await request.json()
+    resend.emails.send({
+        from: "onboarding@resend.dev",
+        to: `${body.email}`,
         subject: "hello world",
-        html: emailHtml,
-    };
-
-    const res = await transporter.sendMail(options);
-    return NextResponse.json({ data: res })
+        react: <WelcomeTemplate name={body.name} />
+    })
+    return NextResponse.json({ data: body }, { status: statusCode.accepted })
 }
