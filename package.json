@@ -25,6 +25,7 @@
     "bcryptjs": "^2.4.3",
     "cloudinary": "^1.41.0",
     "daisyui": "^3.9.3",
+    "framer-motion": "^10.18.0",
     "icons": "^1.0.0",
     "isomorphic-unfetch": "^4.0.2",
     "mongodb": "^6.3.0",
