@@ -8,12 +8,10 @@ import CenterBox from './component/PageComponents/rootpage/centerBox/RootPageCen
 
 const Home: React.FC = () => {
   return (
-    <div className="max-h-screen overflow-auto">
+    <div className="max-h-screen flex-col overflow-auto">
       <FlipBox content={""} />
       <CenterBox />
-      <div>
-        <Footer />
-      </div>
+      <Footer />
     </div>
   );
 };

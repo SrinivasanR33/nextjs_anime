@@ -83,22 +83,40 @@ export const loacalImage = {
     footer: {
         footerImage1: require("../../public/footer/footer1.png"),
         footerImage2: require("../../public/footer/footer2.png")
+    },
+    space: {
+        spaceImage1: require("../../public/home/moon1.jpg"),
+        spaceImage2: require("../../public/home/moon2.jpg")
     }
 }
 export const landingpageImageList: homeImageList[] = [
-    { id: 1, image: loacalImage.landingPageImage.entryPageImage1 },
-    { id: 2, image: loacalImage.landingPageImage.entryPageImage2 },
-    { id: 3, image: loacalImage.landingPageImage.entryPageImage3 },
-    { id: 4, image: loacalImage.landingPageImage.entryPageImage4 },
-    { id: 5, image: loacalImage.landingPageImage.entryPageImage5 },
+    { id: 1, image: loacalImage.space.spaceImage1 },
+    { id: 2, image: loacalImage.space.spaceImage1 },
+    { id: 3, image: loacalImage.space.spaceImage1 },
+    { id: 4, image: loacalImage.space.spaceImage1 },
+    { id: 5, image: loacalImage.space.spaceImage1 },
 ]
 export const landingpageImageList2: homeImageList[] = [
-    { id: 7, image: loacalImage.landingPageImage.entryPageImage6 },
-    { id: 8, image: loacalImage.landingPageImage.entryPageImage7 },
-    { id: 6, image: loacalImage.landingPageImage.entryPageImage8 },
-    { id: 9, image: loacalImage.landingPageImage.entryPageImage9 },
-    { id: 10, image: loacalImage.landingPageImage.entryPageImage10 },
+    { id: 7, image: loacalImage.space.spaceImage2 },
+    { id: 8, image: loacalImage.space.spaceImage2 },
+    { id: 6, image: loacalImage.space.spaceImage2 },
+    { id: 9, image: loacalImage.space.spaceImage2 },
+    { id: 10, image: loacalImage.space.spaceImage2 },
 ]
+// export const landingpageImageList: homeImageList[] = [
+//     { id: 1, image: loacalImage.landingPageImage.entryPageImage1 },
+//     { id: 2, image: loacalImage.landingPageImage.entryPageImage2 },
+//     { id: 3, image: loacalImage.landingPageImage.entryPageImage3 },
+//     { id: 4, image: loacalImage.landingPageImage.entryPageImage4 },
+//     { id: 5, image: loacalImage.landingPageImage.entryPageImage5 },
+// ]
+// export const landingpageImageList2: homeImageList[] = [
+//     { id: 7, image: loacalImage.landingPageImage.entryPageImage6 },
+//     { id: 8, image: loacalImage.landingPageImage.entryPageImage7 },
+//     { id: 6, image: loacalImage.landingPageImage.entryPageImage8 },
+//     { id: 9, image: loacalImage.landingPageImage.entryPageImage9 },
+//     { id: 10, image: loacalImage.landingPageImage.entryPageImage10 },
+// ]
 
 export const Linkpage = {
     home: { link: "/home", label: 'Home' },
