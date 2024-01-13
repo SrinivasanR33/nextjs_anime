@@ -28,7 +28,7 @@ function Navbar(props: Props) {
     const { status, data: session } = useSession()
     const userImage: string = session && session.user?.image ? session.user.image : "";
     const admin = session?.user?.name ? false : true
-    console.log(session, useSession(), "session")
+    // console.log(session, useSession(), "session")
     return (
         <div className="navbar h-4 border-b-2 border-t-2 border-green-800">
             <div className="flex-1">
