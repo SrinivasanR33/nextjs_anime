@@ -55,13 +55,6 @@ function ImageList() {
             dispatch(setFullScreenState(true))
             element.requestFullscreen();
         }
-        // else if (element.mozRequestFulscreen) {
-        //     element.mozRequestFullScreen();
-        // } else if (element.webkitRequestFullscreen) {
-        //     element.webkitRequestFullscreen();
-        // } else if (element.msRequestFullscreen) {
-        //     element.msRequestFullscreen();
-        // }
     };
 
     const closeFullscreen = () => {
@@ -72,13 +65,6 @@ function ImageList() {
             dispatch(setFullScreenState(false))
             doc.exitFullscreen();
         }
-        // else if (document.mozCancelFullScreen) {
-        //     document.mozCancelFullScreen();
-        // } else if (document.webkitExitFullscreen) {
-        //     document.webkitExitFullscreen();
-        // } else if (document.msExitFullscreen) {
-        //     document.msExitFullscreen();
-        // }
     };
     const getScreenDimensions = () => {
         return {
@@ -125,16 +111,8 @@ function ImageList() {
             {!fullscreenImage ? <>
                 <div>
                     <div className='flex gap-7 p-2'>
-                        {/* {folderNameandId} */}
                         <div>
                             <SelectField options={masterList} label='name' onChange={handelFilter} />
-                            {/* <select className="select select-accent w-full max-w-xs" onChange={handelFilter}>
-                                <option value={""}>Select Folder name</option>
-                                {arr.map((val, i) => (
-                                    <option key={i} value={val.name}>{val.name}</option>
-                                ))}
-
-                            </select> */}
                         </div>
                     </div>
                     <div ref={listInnerRef} onScroll={onScroll} className='grid lg:grid-cols-6 md:grid-cols-8 sm:grid-cols-10 xs:grid-cols-12 gap-3 overflow-y-auto' style={{ maxHeight: '750px' }}>
