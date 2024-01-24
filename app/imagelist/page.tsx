@@ -134,7 +134,7 @@ function ImageList() {
                                     <div key={i} className='p-2'>
                                         <div className='flex'>
                                             <DownloadImage publicId={val.publicId} type={""} />
-                                            {admin ? <button className='btn btn-ghost  btn-square btn-xs' onClick={() => handelDelete(val._id)}><FiDelete /></button> : null}
+                                            {/* {admin ? <button className='btn btn-ghost  btn-square btn-xs' onClick={() => handelDelete(val._id)}><FiDelete /></button> : null} */}
                                         </div>
                                         <MyImage src={val.secureUrl}
                                             width={500} // Set your desired width
