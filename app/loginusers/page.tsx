@@ -4,6 +4,7 @@ import { LoginUserList } from './LoginUserService'
 import { UserLoginData } from '@/utils/types'
 import { tableName1 } from '../commen/CommenName'
 import Table, { Column } from '../component/datagridComponent/DataGrid'
+import Image from 'next/image'
 
 function LoginUser() {
     const [loggedUsers, setLoggedUsers] = useState([])
@@ -18,15 +19,15 @@ function LoginUser() {
         {
             Header: "Name", accessor: 'name', isAction: true, action: (row: UserLoginData) => (
                 <div className="flex items-center gap-3">
-                    <div className="avatar">
-                        <div className="mask mask-squircle rounded-full w-12 h-12">
-                            <img src={row.image} alt="Avatar Tailwind CSS Component" />
-                        </div>
-                    </div>
+                    {/* <div className="avatar">
+                        <div className="mask mask-squircle rounded-full w-12 h-12"> */}
+                    <Image src={row.image} width={40} height={40} className='rounded-full' alt="Avatar Tailwind CSS Component" />
+                    {/* </div> */}
+                    {/* </div> */}
                     <div>
                         <div className="font-bold">{row.name}</div>
                     </div>
-                </div>
+                </div >
             )
         },
         {

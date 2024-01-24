@@ -15,10 +15,11 @@ interface props {
     uploadFolderId: string | undefined;
     publicId: string;
     folderName: string | undefined;
-    setpublicId: Function
+    setpublicId: Function;
+    des: string | undefined;
 }
 const UploadType: React.FC<props> = (props) => {
-    const { publicId, setpublicId, uploadFolderId, folderName } = props
+    const { publicId, setpublicId, uploadFolderId, folderName, des } = props
     console.log(uploadFolderId, 'uploadFolderId')
     const uploadFun = async (req: UploadType) => {
         const res = await UploadImage(req)
@@ -37,6 +38,7 @@ const UploadType: React.FC<props> = (props) => {
                     fileType: info.resource_type,
                     secureUrl: info.secure_url,
                     publicId: info.public_id,
+                    des: des,
                     uploadImagInfo: info,
                 }
                 uploadFun(payload)

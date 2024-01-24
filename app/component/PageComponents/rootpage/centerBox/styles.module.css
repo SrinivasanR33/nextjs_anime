@@ -1,16 +1,12 @@
 /* styles.module.css */
-/* styles.module.css */
+
 .container {
-
-
-
     height: 100vh;
-
 }
 
-/* @media (max-width:700px) {
+@media (max-width:1600px) {
     .container {
         display: none;
 
     }
-} */
+}

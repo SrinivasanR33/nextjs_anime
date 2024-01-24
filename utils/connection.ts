@@ -37,6 +37,7 @@ export const connect = async () => {
       secureUrl: String,
       fileType: String,
       publicId: String,
+      des: String,
       uploadImagInfo: Object,
     },
     {

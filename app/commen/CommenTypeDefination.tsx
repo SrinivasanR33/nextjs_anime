@@ -46,6 +46,7 @@ export interface UploadType {
     secureUrl: string,
     publicId: string,
     uploadImagInfo: object,
+    des: string | undefined,
 }
 export interface UserCredentialsConfig {
     username: { label: string; type: string; placeholder: string };

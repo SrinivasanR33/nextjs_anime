@@ -7,3 +7,9 @@ export const UploadImageList = async (req: payloadPaginationData) => {
     const res = await UploadData.json()
     return res
 }
+export const DeleteUpload = async (req: { _id: string }) => {
+    // console.log(req, req, JSON.stringify(req))
+    const UploadData = await fetch(`${URL}/upload`, { cache: "no-store", method: "delete", body: JSON.stringify(req) })
+    const res = await UploadData.json()
+    return res
+}
