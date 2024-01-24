@@ -7,9 +7,8 @@ const CenterBox: React.FC = () => {
 
     return (
         <div className={`${styles.container}`}>
-            <div className='flex lg:flex-row justify-between md:flex-col'>
+            <div className='flex lg:flex-row justify-between md:flex-col '>
                 <div className=''>
-
                     <motion.div
                         style={{ width: 500, height: 400, background: "gray", }}
                         initial={{ scale: 0, translateX: 0 }}

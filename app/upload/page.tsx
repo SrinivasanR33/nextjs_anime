@@ -6,6 +6,7 @@ import SelectField from '../component/SelectComponent';
 import { CreateUploadMasterAPI } from '../masters/uploadMasters/UploadMasterService';
 import { UploadMasterType } from '@/utils/types';
 import { SelecfieldArr } from '../commen/CommenTypeDefination';
+import UserFormInput from '../component/formFieldComponet/FormFieldComponent';
 
 interface cloudinaryresult {
     public_id: string
@@ -18,6 +19,7 @@ interface TypeObject {
 const arr = UploadArrayType
 const UploadPage = () => {
     const [publicId, setpublicId] = useState("")
+    const [des, setDes] = useState<string | undefined>("")
     const [folderNameandId, setFolderNameandId] = useState<string | undefined>('')
     const [typeObjectValue, setTypeObjectValue] = useState<SelecfieldArr | undefined>({
         value: "",
@@ -49,20 +51,17 @@ const UploadPage = () => {
     }, [])
     return (
         <>
-            <div className='max-h-screen flex justify-center gap-7 p-2'>
+            <div className='max-h-screen flex justify-center gap-7 pt-6'>
                 {/* {folderNameandId} */}
-                <div>
+                <div className='flex gap-8'>
                     <SelectField options={masterList} label='name' onChange={handelselectFunction} />
-                    {/* <select className="select select-accent w-full max-w-xs" onChange={handelselectFunction}>
-                        <option value={DEFAULT_FOLDER_NAME}>Select Folder name</option>
-                        {arr.map((val, i) => (
-                            <option key={i} value={val.sno}>{val.name}</option>
-                        ))}
-
-                    </select> */}
+                    <textarea onChange={(e) => {
+                        console.log(e.target.value);
+                        setDes(e.target.value)
+                    }} placeholder={"Description"} value={des} className="textarea textarea-bordered textarea-sm w-full max-w-xs" ></textarea>
                 </div>
                 <div >
-                    <UploadType publicId={publicId} setpublicId={setpublicId} folderName={typeObjectValue?.value} uploadFolderId={folderNameandId} />
+                    <UploadType publicId={publicId} setpublicId={setpublicId} folderName={typeObjectValue?.value} des={des} uploadFolderId={folderNameandId} />
                 </div>
             </div>
         </>

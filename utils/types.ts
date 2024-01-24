@@ -14,10 +14,12 @@ export interface UserLoginData {
   name: string;
 }
 export interface UploadIamgeList {
+  _id?: string;
   type: string;
   secureUrl: string;
   fileType: string;
   publicId: string;
+  des?: string;
   uploadImagInfo: object;
 }
 export interface UploadMasterType {

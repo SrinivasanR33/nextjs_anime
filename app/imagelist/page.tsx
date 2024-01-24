@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect, useRef, useState } from 'react'
 import { UploadArrayType, selectArr } from '../commen/CommenName'
-import { UploadImageList } from './imageListService'
+import { DeleteUpload, UploadImageList } from './imageListService'
 import CloudinaryImage from '../component/ImageComponent/CloudinaryImage'
 import DownloadButton from '../component/DownloadButton'
 import DownloadImage from '../component/DownloadButton'
@@ -13,6 +13,9 @@ import { setFullScreenState, setLoadingState } from '@/redux/actions/masterSlice
 import { ImageLoading } from '../commen/LoadingComponets'
 import { CreateUploadMasterAPI } from '../masters/uploadMasters/UploadMasterService'
 import SelectField from '../component/SelectComponent'
+import { FiDelete } from 'react-icons/fi'
+import { useSession } from 'next-auth/react'
+import Image from 'next/image'
 
 
 interface pageInfo {
@@ -23,6 +26,8 @@ interface pageInfo {
 
 function ImageList() {
     const arr = UploadArrayType
+    const { status, data: session } = useSession()
+    const admin = session?.user?.name ? false : true
     const [imageList, setImageList] = useState<UploadIamgeList[] | []>([])
     const [selectedType, setSelectedType] = useState<string>()
     const [pageInfo, setPageInfo] = useState<pageInfo>({
@@ -77,7 +82,9 @@ function ImageList() {
             const payload: payloadPaginationData = { type: selectedType, page: pageInfo.page, pageSize: pageInfo.pageSize }
             const res = await UploadImageList(payload)
             setPageInfo((per: pageInfo) => ({ ...per, page: res.page, pageSize: res.pageSize + 1, totalCount: res.totalCount }))
-            setImageList((per) => [...res.data, ...per])
+            if (pageInfo.totalCount !== imageList.length) {
+                setImageList((per) => [...res.data, ...per])
+            }
         } catch (error) {
 
         }
@@ -93,6 +100,9 @@ function ImageList() {
             }
         }
     };
+    const handelDelete = async (id: string) => {
+        const deleteAPI = await DeleteUpload({ _id: id })
+    }
     const handelGetAPI = async () => {
         const res = await CreateUploadMasterAPI()
         if (res) {
@@ -115,21 +125,26 @@ function ImageList() {
                             <SelectField options={masterList} label='name' onChange={handelFilter} />
                         </div>
                     </div>
-                    <div ref={listInnerRef} onScroll={onScroll} className='grid lg:grid-cols-6 md:grid-cols-8 sm:grid-cols-10 xs:grid-cols-12 gap-3 overflow-y-auto' style={{ maxHeight: '750px' }}>
+                    <div ref={listInnerRef} onScroll={onScroll} className='grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 xs:grid-cols-12 gap-3 overflow-y-auto' style={{ maxHeight: '750px' }}>
                         {tableLoading ?
                             <ImageLoading num={24} />
                             :
                             <>
                                 {imageList.map((val: UploadIamgeList, i) => (
                                     <div key={i} className='p-2'>
-                                        <DownloadImage publicId={val.publicId} type={""} />
+                                        <div className='flex'>
+                                            <DownloadImage publicId={val.publicId} type={""} />
+                                            {admin ? <button className='btn btn-ghost  btn-square btn-xs' onClick={() => handelDelete(val._id)}><FiDelete /></button> : null}
+                                        </div>
                                         <MyImage src={val.secureUrl}
                                             width={500} // Set your desired width
                                             height={300} // Set your desired height
                                             priority={true}
+                                            className='w-[500px] h-[200px]'
                                             quality={85}
                                             onClick={() => openFullscreen(val.secureUrl)}
                                             alt='image' />
+                                        <div><label className=''>{val.des}</label></div>
                                     </div>
                                 ))}
                             </>

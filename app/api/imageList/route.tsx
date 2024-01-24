@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
         const skip = (page - 1) * pageSize;
 
         // Query documents with pagination
-        const documents = await Upload.find({ type: targetType })
+        const documents = await Upload.find({ type: targetType, fileType: "image" })
             .skip(skip)
             .limit(pageSize)
             .exec();
