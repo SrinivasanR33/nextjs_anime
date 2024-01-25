@@ -10,14 +10,14 @@ const MiddleBox: React.FC = () => {
     const [currentStyle, setcurrentStyle] = useState(1)
     const Openstyle: CSSProperties = {
         width: 500,
-        height: 400,
+        height: 600,
         background: "gray",
         transition: 'width 1s ease-in',
         cursor: 'pointer'
     }
     const Closestyle: CSSProperties = {
         width: 100,
-        height: 400,
+        height: 600,
         transition: 'width 1s ease-in',
         background: "gray",
         cursor: 'pointer'

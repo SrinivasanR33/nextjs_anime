@@ -1,26 +1,28 @@
 .container {
   display: flex;
+  /* flex-direction: column; */
   height: 100vh;
-  /* overflow: hidden; */
+  /* overflow: auto; */
 }
 
 .hidecontainer {
+  
   height: 100vh;
-  /* overflow: hidden; */
+  /* overflow: auto; */
 }
 
 .top {
   display: flex;
   flex-direction: column;
   flex: 1;
-  height: 70%;
+  height: 90%;
   transition: height 1s;
 }
 
 .bottom {
   display: flex;
   flex: 1;
-  height: 75%;
+  height: 94%;
   /* padding-right: 60px; */
   transition: height 1s;
 }
@@ -52,7 +54,47 @@
 /* Separate class for showing the bottom */
 .showBottom {
   flex: 1;
-  height: 70%;
+  height: 90%;
   transition: height 1s;
   /* width: 100%; */
+}
+
+@media(max-width:800px){
+  .container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    /* overflow: auto; */
+  }
+  
+  .hidecontainer {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    /* overflow: auto; */
+  }
+  
+}
+@media(max-width:500px){
+  .container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    /* overflow: auto; */
+  }
+  
+  .hidecontainer {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    /* overflow: auto; */
+  }
+  .bottom {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 94%;
+    /* padding-right: 60px; */
+    transition: height 1s;
+  }
 }
