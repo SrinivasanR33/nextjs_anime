@@ -49,6 +49,7 @@ function Navbar(props: Props) {
                         </div></li>}
                     {status === "authenticated" && <li><Link href={Linkpage.image.link}>{Linkpage.image.label}</Link></li>}
                     {status === "authenticated" && <li><Link href={Linkpage.video.link}>{Linkpage.video.label}</Link></li>}
+                    {status === "authenticated" && <li><Link href={Linkpage.Request.link}>{Linkpage.Request.label}</Link></li>}
                     {status === "authenticated" && <li>
                         <Link href={""}>
                             <LogoutButton />
@@ -90,6 +91,7 @@ function Navbar(props: Props) {
                             </details></li>}
                             {status === "authenticated" && <li><Link href={Linkpage.image.link}><IconContainer classname={IconStyle.sideBarIcon} element={FaRegImage} />{Linkpage.image.label}</Link></li>}
                             {status === "authenticated" && <li><Link href={Linkpage.video.link}><IconContainer classname={IconStyle.sideBarIcon} element={MdOndemandVideo} />{Linkpage.video.label}</Link></li>}
+                            {status === "authenticated" && <li><Link href={Linkpage.Request.link}><IconContainer classname={IconStyle.sideBarIcon} element={MdOndemandVideo} />{Linkpage.Request.label}</Link></li>}
                         </ul>
                     </div>
                 </div>
