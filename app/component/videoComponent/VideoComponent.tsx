@@ -1,29 +1,35 @@
-"use client"
+"use client";
 // components/VideoPlayer.tsx
-import { CldVideoPlayer } from 'next-cloudinary';
-import 'next-cloudinary/dist/cld-video-player.css';
+import { CldVideoPlayer, getCldVideoUrl } from "next-cloudinary";
+import "next-cloudinary/dist/cld-video-player.css";
 
 interface VideoPlayerProps {
-    src: string;
-    width?: string | number;
-    height?: string | number;
-    controls?: boolean;
+  src: string;
+  width?: string | number;
+  height?: string | number;
+  controls?: boolean;
 }
 
 const VideoPlayer: React.FC<VideoPlayerProps> = ({
-    src,
-    width = '540',
-    height = '160',
-    controls = true,
+  src,
+  width = "540",
+  height = "160",
+  controls = true,
 }) => {
-    return (
-        <CldVideoPlayer
-            src={src}
-            width={width}
-            height={height}
-        // controls={controls}
-        />
-    );
+  const url = getCldVideoUrl({
+    width: width,
+    height: height,
+    src: src,
+  });
+  return (
+    <CldVideoPlayer
+      src={url}
+      width={width}
+      height={height}
+      controls={controls}
+    // controlBar={}
+    />
+  );
 };
 
 export default VideoPlayer;

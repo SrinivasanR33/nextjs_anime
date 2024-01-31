@@ -6,6 +6,7 @@ import {
   UserData,
   UserLoginData,
 } from "./types";
+import { object } from "zod";
 
 // CONNECTING TO MONGOOSE (Get Database Url from .env.local)
 const { DATABASE_URL } = process.env;
@@ -30,6 +31,11 @@ export const connect = async () => {
     image: String,
     name: String,
     emailVerified: Boolean,
+  });
+  const RequestSchema = new mongoose.Schema({
+    requestMessage: String,
+    userInfo: Object,
+    isActive: Boolean,
   });
   const UploadSchema = new mongoose.Schema(
     {
@@ -68,10 +74,13 @@ export const connect = async () => {
   const Upload =
     mongoose.models.Upload ||
     mongoose.model<UploadIamgeList>("Upload", UploadSchema);
+  const Request =
+    mongoose.models.Request ||
+    mongoose.model<UploadIamgeList>("Request", RequestSchema);
 
-  return { conn, Adminuser, Upload, users, UploadMasters };
+  return { conn, Adminuser, Upload, Request, users, UploadMasters };
 };
 export const scheman = async () => {
-  const { Adminuser, Upload, users } = await connect();
-  return { Adminuser, Upload, users };
+  const { Adminuser, Upload, users, Request } = await connect();
+  return { Adminuser, Upload, users, Request };
 };

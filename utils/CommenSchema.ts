@@ -16,3 +16,7 @@ export async function connectUploadMaster() {
   const { UploadMasters } = await connect();
   return UploadMasters;
 }
+export async function connectRequest() {
+  const { Request } = await connect();
+  return Request;
+}
