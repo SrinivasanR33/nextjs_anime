@@ -17,8 +17,8 @@ export const uploadMasterFormName = {
     uploadId: 'Upload ID'
 
 }
-// export const URL = "http://localhost:4000/api"
-export const URL = "https://nextjs-anime-kappa.vercel.app/api"
+export const URL = "http://localhost:4000/api"
+// export const URL = "https://nextjs-anime-kappa.vercel.app/api"
 export const DEFAULT_FOLDER_NAME = "uzwj6aq9"
 export const CLOUD_NAME = "ddaygokti"
 export const UploadArrayType = [
