@@ -127,6 +127,7 @@ export const Linkpage = {
     upload: { link: '/upload', label: "Upload" },
     login: { link: '/api/auth/signin', label: "Login" },
     Privacy: { link: '/Privacy/Policy', label: "Privacy Policy" },
+    Request: { link: '/request', label: "Request" },
 }
 export const selectArr = ({ arr, valueKey, labelKey }: SelectArrProps) => {
     const res = arr.map((val: SelecfieldArr) => ({

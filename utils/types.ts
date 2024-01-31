@@ -22,6 +22,12 @@ export interface UploadIamgeList {
   des?: string;
   uploadImagInfo: object;
 }
+export interface RequestList {
+  _id?: string;
+  requestMessage: string;
+  isActive: boolean;
+  userInfo: object;
+}
 export interface UploadMasterType {
   _id?: string;
   name: string;
