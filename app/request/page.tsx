@@ -5,8 +5,8 @@ type Props = {}
 const RequestPage = (props: Props) => {
     return (
         <div className="min-w-full max-h-screen overflow-auto">
-            <div className="flex justify-center h-full">
-                <textarea className="textarea" placeholder="Bio"  ></textarea>
+            <div className="flex justify-center p-3">
+                <textarea className="textarea" placeholder="Request Message" cols={50} rows={4}></textarea>
             </div>
         </div>
     )

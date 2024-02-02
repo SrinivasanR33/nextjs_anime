@@ -3,7 +3,7 @@ import { Linkpage, loacalImage } from '../commen/CommenName'
 
 const Footer = () => {
     return (
-        <div className='h-[230px]'>
+        <div className='flex h-[250px]'>
             <footer className="footer p-10 bg-neutral text-neutral-content">
                 <nav>
                     <header className="footer-title">Legal</header>
@@ -11,7 +11,7 @@ const Footer = () => {
                     <a className="link link-hover" href={Linkpage.Privacy.link}>{Linkpage.Privacy.label}</a>
                 </nav>
             </footer>
-        </div>
+         </div>
     )
 }
 

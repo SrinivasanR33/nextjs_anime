@@ -6,7 +6,7 @@
 
 @media (max-width:1600px) {
     .container {
-        display: none;
+        /* display: none; */
 
     }
 }
