@@ -7,27 +7,42 @@ const CenterBox: React.FC = () => {
 
     return (
         <div className={`${styles.container}`}>
-            <div className='flex lg:flex-row justify-between md:flex-col '>
-                <div className=''>
+            <div className="hero min-h-screen bg-base-200">
+                <div className="hero-content flex-col lg:flex-row-reverse">
+                    <img src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" className="lg:w-1/2 lg:h-[500px] h-[100px] w-1/4 sm:h-[300px] sm:w-1/3  rounded-lg shadow-2xl" />
+                    <div>
+                        <h1 className="text-5xl font-bold">Box Office News!</h1>
+                        <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                        <button className="btn btn-primary">Get Started</button>
+                    </div>
+                </div>
+            </div>
+            {/* <div className='flex lg:flex-row justify-center md:flex-col '>
+                <div className='flex flex-1 items-center justify-end'>
                     <motion.div
                         style={{ width: 500, height: 400, background: "gray", }}
-                        initial={{ scale: 0, translateX: 0 }}
+                        initial={{ scale: 0, rotate:0 }}
+                        
                         whileInView={{
                             transformOrigin: "left",
                             scale: 1,
-
-                            translateX: 300
+                           
                         }}
-                        viewport={{ once: true }}
+                        whileHover={{
+                           
+                            
+                        }}
+                        // viewport={{ once: true }}
                         transition={{
-                            duration: 1,
-                            ease: 'easeInOut'
+                            duration: 2,
+                            ease: 'easeInOut',
+                            
                         }}
                     >
                         Box 1
                     </motion.div>
                 </div>
-                <div className='flex items-center'>
+                <div className='flex flex-1 items-center justify-end'>
 
                     <motion.div
                         style={{ width: 500, height: 200 }}
@@ -36,9 +51,8 @@ const CenterBox: React.FC = () => {
                             transformOrigin: "left",
                             scale: 1,
                             opacity: 2,
-                            translateX: -300
                         }}
-                        viewport={{ once: true }}
+                        // viewport={{ once: true }}
                         transition={{
                             duration: 1,
                             ease: 'easeInOut'
@@ -49,7 +63,7 @@ const CenterBox: React.FC = () => {
                         sdvsdzvzdvhuidvjkz uivbjsdkv dikjbvdv mdvdcv
                     </motion.div>
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 };

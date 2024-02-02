@@ -27,7 +27,7 @@ const FlipBox: React.FC<FlipBoxProps> = ({ content }) => {
 
     return (
         <div className={`${styles.container}`}>
-            <div className={`${styles.box_container}   ${flipped ? styles.flipped : ''} lg:flex-row md:flex-row sm:flex-col flex-col`}>
+            <div className={`${styles.box_container}   ${flipped ? styles.flipped : styles.flipped1} lg:flex-row md:flex-row sm:flex-col flex-col `}>
                 {boxes.map((box: homeImageList, i) => (
                     <div className={`${styles.box}`} key={i}>
                         {/* <Image src={demon} layout='fill' objectFit='covers' alt=''/>S */}

@@ -11,8 +11,8 @@ const Home: React.FC = () => {
   return (
     <div className="max-h-screen flex-col overflow-auto">
       <FlipBox content={""} />
-      <CenterBox />
       <MiddleBox />
+      <CenterBox />
       <Footer />
     </div>
   );
