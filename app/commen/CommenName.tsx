@@ -1,6 +1,6 @@
 import { SelecfieldArr, SelectArrProps, homeImageList } from "./CommenTypeDefination"
 
-export const companyName = "RS & Software"
+export const companyName = "RS & Softwares"
 export const tableName1 = "Logged Users List"
 export const tableName2 = "Admin Users List"
 export const formName = {
@@ -91,7 +91,11 @@ export const loacalImage = {
     space: {
         spaceImage1: require("../../public/home/moon1.jpg"),
         spaceImage2: require("../../public/home/moon2.jpg")
-    }
+    },
+    // homeVideo: {
+    //     mix1: require("../../public/video/mix1.mp4"),
+    //     mix2: require("../../public/video/mix2.mp4")
+    // }
 }
 // export const landingpageImageList: homeImageList[] = [
 //     { id: 1, image: loacalImage.space.spaceImage1 },

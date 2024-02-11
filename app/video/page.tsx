@@ -62,7 +62,7 @@ function Video() {
                 <div className='grid lg:grid-cols-6 md:grid-cols-8 sm:grid-cols-10 xs:grid-cols-12 gap-3 overflow-y-auto' >
                     {videoList.map((val: UploadIamgeList, i) => (
                         <div key={i} className='p-2'>
-                            {/* <DownloadImage publicId={val.publicId} type={val.fileType} /> */}
+                            <DownloadImage publicId={val.publicId} type={val.fileType} />
                             <VideoPlayer src={val.publicId}
                                 width={""} // Set your desired width
                                 height={""} // Set your desired height

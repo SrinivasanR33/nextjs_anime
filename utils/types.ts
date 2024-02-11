@@ -26,7 +26,10 @@ export interface RequestList {
   _id?: string;
   requestMessage: string;
   isActive: boolean;
-  userInfo: object;
+  userInfo?: {
+    name: string | null | undefined;
+    image: string | null | undefined;
+  };
 }
 export interface UploadMasterType {
   _id?: string;

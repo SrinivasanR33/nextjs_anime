@@ -2,6 +2,8 @@
 // components/VideoPlayer.tsx
 import { CldVideoPlayer, getCldVideoUrl } from "next-cloudinary";
 import "next-cloudinary/dist/cld-video-player.css";
+import imag from "../../../public/S.png";
+
 
 interface VideoPlayerProps {
   src: string;
@@ -12,8 +14,8 @@ interface VideoPlayerProps {
 
 const VideoPlayer: React.FC<VideoPlayerProps> = ({
   src,
-  width = "540",
-  height = "160",
+  width = "640px",
+  height = "360px",
   controls = true,
 }) => {
   const url = getCldVideoUrl({
@@ -27,6 +29,10 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
       width={width}
       height={height}
       controls={controls}
+      logo={{
+        imageUrl: imag.src,
+        // onClickUrl: 'https://spacejelly.dev'
+      }}
     // controlBar={}
     />
   );

@@ -1,19 +1,25 @@
 "use client"
+import { companyName } from '@/app/commen/CommenName';
 // CenterBox.tsx
 import styles from './styles.module.css';
 import { motion } from "framer-motion";
-const CenterBox: React.FC = () => {
+import Image from 'next/image';
+type centerprops = {
+    title: string,
+    summary: string,
+    imag: string
+}
+const CenterBox: React.FC<centerprops> = (props) => {
 
-
+    const { title, summary, imag } = props
     return (
         <div className={`${styles.container}`}>
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col lg:flex-row-reverse">
-                    <img src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" className="lg:w-1/2 lg:h-[500px] h-[100px] w-1/4 sm:h-[300px] sm:w-1/3  rounded-lg shadow-2xl" />
+                    <Image src={imag} alt='home' className="lg:w-1/2 rounded-lg shadow-2xl" />
                     <div>
-                        <h1 className="text-5xl font-bold">Box Office News!</h1>
-                        <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                        <button className="btn btn-primary">Get Started</button>
+                        <h1 className="text-5xl font-bold">{title}</h1>
+                        <p className="py-6">{``}{summary}</p>
                     </div>
                 </div>
             </div>
