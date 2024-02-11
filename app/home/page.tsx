@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './styles.module.css';
 import Image from 'next/image';
-import { homepageImageList1, loacalImage } from '../commen/CommenName';
+import { companyName, homepageImageList1, loacalImage } from '../commen/CommenName';
 import CenterBox from '../component/PageComponents/rootpage/centerBox/RootPageCenterBox';
 import { homeImageList } from '../commen/CommenTypeDefination';
 
@@ -55,7 +55,17 @@ const HomePage = () => {
                 </div>
             </div>
 
-            <CenterBox />
+            <CenterBox 
+             title={`Explore a Universe of Anime!`}
+             summary={`Unleash your creativity and bring your
+              favorite anime moments to life by downloading 
+              high-quality images and videos from ${companyName}.
+               With just a few clicks, you can access a treasure trove of 
+               content to use in your projects, wallpapers, or social media posts.
+                Our user-friendly interface makes it easy to find and download exactly what you're looking for.`} 
+             imag={loacalImage.homePage.homeimage1}
+            
+            />
         </div>
     );
 };

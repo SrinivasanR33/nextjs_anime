@@ -1,26 +1,34 @@
-// components/DownloadImage.tsx
 import React from 'react';
 import { FaDownload } from 'react-icons/fa6';
 import { CLOUD_NAME } from '../commen/CommenName';
 
-interface publictype {
+interface PublicType {
     publicId: string;
     type: string;
 }
 
-const DownloadImage: React.FC<publictype> = (props) => {
+const DownloadImage: React.FC<PublicType> = (props) => {
     const { publicId, type } = props;
-    console.log(type)
+
     const handleDownload = () => {
         try {
             const cloudName = CLOUD_NAME;
-            const imageUrl = `https://res.cloudinary.com/${cloudName}/image/upload/${publicId}`;
+            let fileExtension = '';
+            let downloadFilename = '';
 
-            // For video download, modify the URL and filename accordingly
-            const isVideo = type === 'video';
-            const fileExtension = isVideo ? 'mp4' : 'jpg';
-            const downloadFilename = isVideo ? `downloaded-video-${publicId}.${fileExtension}` : `${publicId}.${fileExtension}`;
+            // Determine file extension and filename based on the file type
+            if (type === 'video') {
+                fileExtension = 'mp4';
+                downloadFilename = `downloaded-video-${publicId}.${fileExtension}`;
+            } else {
+                fileExtension = 'jpg';
+                downloadFilename = `${publicId}.${fileExtension}`;
+            }
 
+            // Construct Cloudinary URL for download
+            const imageUrl = `https://res.cloudinary.com/${cloudName}/${type}/upload/${publicId}.${fileExtension}?fl_attachment=true`;
+
+            // Fetch the file and trigger download
             fetch(imageUrl)
                 .then((response) => response.blob())
                 .then((blob) => {
