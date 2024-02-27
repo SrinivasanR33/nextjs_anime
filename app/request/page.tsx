@@ -70,6 +70,9 @@ const RequestPage = (props: Props) => {
                 <textarea className="textarea textarea-primary" placeholder="Request Message" value={paload} onChange={(e) => setPaload(e.target.value)} cols={40} rows={2}></textarea>
                 <button className='btn btn-sm btn-primary self-center' disabled={!paload} onClick={handelSubmit}>Send Request</button>
             </div>
+            <div className='flex justify-center mx-[1rem]'>
+            Submit your requests for favorite image and video categories to the admin. Help us curate content tailored to your preferences for an enhanced browsing experience.
+            </div>
             {admin ?
                 <div className='p-[2rem] min-h-[500px] overflow-x-auto'>
                     <Table columns={col} data={request} loading={tableLoading as boolean} />
