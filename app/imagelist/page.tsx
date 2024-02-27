@@ -2,9 +2,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { UploadArrayType, selectArr } from '../commen/CommenName'
 import { DeleteUpload, UploadImageList } from './imageListService'
-import CloudinaryImage from '../component/ImageComponent/CloudinaryImage'
-import DownloadButton from '../component/DownloadButton'
-import DownloadImage from '../component/DownloadButton'
 import { UploadIamgeList } from '@/utils/types'
 import MyImage from '../component/ImageComponent/CustomImage'
 import { SelecfieldArr, payloadPaginationData } from '../commen/CommenTypeDefination'
@@ -16,6 +13,7 @@ import SelectField from '../component/SelectComponent'
 import { FiDelete } from 'react-icons/fi'
 import { useSession } from 'next-auth/react'
 import Image from 'next/image'
+import ImageDownload from '../component/ImageDownload'
 
 
 interface pageInfo {
@@ -83,7 +81,7 @@ function ImageList() {
             const res = await UploadImageList(payload)
             setPageInfo((per: pageInfo) => ({ ...per, page: res.page, pageSize: res.pageSize + 1, totalCount: res.totalCount }))
             if (pageInfo.totalCount !== imageList.length) {
-                setImageList((per) => [...res.data, ...per])
+                setImageList((per) => [...res.data])
             }
         } catch (error) {
 
@@ -125,6 +123,9 @@ function ImageList() {
                             <SelectField options={masterList} label='name' onChange={handelFilter} />
                         </div>
                     </div>
+                        <div className='flex-wrap mx-[1rem]'>
+                        Discover stunning images, download with ease, and enjoy immersive full-screen viewing with just a click.
+                            </div>
                     <div ref={listInnerRef} onScroll={onScroll} className='grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 xs:grid-cols-12 gap-3 overflow-y-auto' style={{ maxHeight: '750px' }}>
                         {tableLoading ?
                             <ImageLoading num={24} />
@@ -133,7 +134,7 @@ function ImageList() {
                                 {imageList.map((val: UploadIamgeList, i) => (
                                     <div key={i} className='p-2'>
                                         <div className='flex'>
-                                            <DownloadImage publicId={val.publicId} type={""} />
+                                            <ImageDownload publicId={val.publicId} type={""} />
                                             {/* {admin ? <button className='btn btn-ghost  btn-square btn-xs' onClick={() => handelDelete(val._id)}><FiDelete /></button> : null} */}
                                         </div>
                                         <MyImage src={val.secureUrl}

@@ -10,13 +10,16 @@ interface VideoPlayerProps {
   width?: string | number;
   height?: string | number;
   controls?: boolean;
+  autoPlay: boolean // Auto play if this is the current video
+  onPlay: CallableFunction // Set as current video when it starts playing
+  onPause: CallableFunction // Reset current video when it pauses
 }
 
 const VideoPlayer: React.FC<VideoPlayerProps> = ({
   src,
   width = "640px",
   height = "360px",
-  controls = true,
+  controls = true, autoPlay, onPause, onPlay
 }) => {
   const url = getCldVideoUrl({
     width: width,
@@ -29,6 +32,9 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
       width={width}
       height={height}
       controls={controls}
+      autoPlay={autoPlay}
+      onPause={onPause}
+      onPlay={onPlay}
       logo={{
         imageUrl: imag.src,
         // onClickUrl: 'https://spacejelly.dev'
