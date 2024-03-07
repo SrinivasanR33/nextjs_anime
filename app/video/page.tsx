@@ -3,17 +3,19 @@ import React, { useEffect, useRef, useState } from 'react'
 import { UploadArrayType, selectArr } from '../commen/CommenName'
 import { setLoadingState } from '@/redux/actions/masterSlice'
 import { SelecfieldArr, videopayload } from '../commen/CommenTypeDefination'
-import { useAppDispatch } from '@/redux/hook/hook'
+import { useAppDispatch, useAppSelector } from '@/redux/hook/hook'
 import { UploadIamgeList } from '@/utils/types'
 import { UploadVideoList } from './Videoservice'
 import VideoPlayer from '../component/videoComponent/VideoComponent'
 import DownloadImage from '../component/DownloadButton'
 import { CreateUploadMasterAPI } from '../masters/uploadMasters/UploadMasterService'
 import SelectField from '../component/SelectComponent'
+import { ImageLoading } from '../commen/LoadingComponets'
 
 function Video() {
     const arr = UploadArrayType
     const dispatch = useAppDispatch()
+    const { tableLoading } = useAppSelector((state) => state.masterReducer)
     const [masterList, setMasterList] = useState<SelecfieldArr[]>([])
     const [videoList, setVideoList] = useState<UploadIamgeList[] | []>([])
     const [currentVideo, setCurrentVideo] = useState<string | null>(null);
@@ -22,6 +24,7 @@ function Video() {
     const handelFilter = async (e: React.ChangeEvent<HTMLSelectElement>) => {
         try {
             dispatch(setLoadingState(true))
+            setVideoList([])
             const payload: videopayload = { type: e.target.value, fileType: "video" }
             const res = await UploadVideoList(payload)
             dispatch(setLoadingState(false))
@@ -47,18 +50,18 @@ function Video() {
         handelGetAPI()
     }, [])
     const handleVideoClick = (src: string) => {
-        console.log(src,"src")
+        console.log(src, "src")
         setCurrentVideo(src); // Set the current video when it's clicked
     };
     const handleVideoPlay = (videoElement: HTMLVideoElement) => {
         // If there's a currently playing video, pause it
         if (currentPlayingVideoRef.current) {
-          currentPlayingVideoRef.current.pause();
+            currentPlayingVideoRef.current.pause();
         }
-    
+
         // Set the current playing video reference
         currentPlayingVideoRef.current = videoElement;
-      };
+    };
     return (
         <div>
             <div className='flex gap-7 p-2'>
@@ -76,6 +79,8 @@ function Video() {
             </div>
             <div>
                 <div className='grid lg:grid-cols-4 md:grid-cols-8 sm:grid-cols-10 xs:grid-cols-12 gap-3 overflow-y-auto' >
+                    {tableLoading ? <ImageLoading num={24} />:
+                    <>
                     {videoList.map((val: UploadIamgeList, i) => (
                         <div key={i} className='p-2'>
                             {/* <DownloadImage publicId={val.publicId} type={val.fileType} /> */}
@@ -88,6 +93,7 @@ function Video() {
                             />
                         </div>
                     ))}
+                    </>}
                 </div>
             </div>
         </div>
